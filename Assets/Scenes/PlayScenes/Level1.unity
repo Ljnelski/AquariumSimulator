@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -237,18 +237,38 @@ MonoBehaviour:
   _pH: 7
   _ammoniaPPM: 5
   _nitratePPM: 1
+  _nitritePPM: 0
   _oxygenPPM: 10
-  _bacteriaBiomass: 0.01
-  _bacteriaConversionRatePPM: 1
-  _bacteriaGrowthRate: 1.05
-  _bacteriaStarvationFactor: 0.75
-  _bacteriaConsumptionRatePPM: 1
   _oxygenExchangePPM: 5
+  _oxygenMaxDiffusePPM: 0
   _nitrateDrainPPM: 0
   _nitriteDrainPPM: 0
   _ammoniaAdditionPPM: 0
   _tickTank: 1
   _tickTime: 0.5
+--- !u!114 &1286019932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286019929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712f180a2e150634db86c2f126752989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputs:
+  - _component: 0
+    _value: 0
+  outputs: []
+  _bacteriaBiomass: 0
+  _bacteriaConversionFactorPPM: 0
+  _bacteriaGrowthRate: 0
+  _bacteriaStarvationFactor: 0
+  _bacteriaConsumptionRatePPM: 0
+  Input: 0
+  Output: 0
 --- !u!1 &2107337346
 GameObject:
   m_ObjectHideFlags: 0
