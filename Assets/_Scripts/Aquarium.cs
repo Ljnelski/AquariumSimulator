@@ -1,18 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Aquarium : MonoBehaviour
 {
-    [Header("Parameters")]
-
-    [Range(0, 14)][SerializeField] private int _pH;
-    [Min(0)][SerializeField] private float _ammoniaPPM;
-    [Min(0)][SerializeField] private float _nitratePPM;
-    [Min(0)][SerializeField] private float _nitritePPM;
-    [Min(0)][SerializeField] private float _oxygenPPM;
-    
-    [Header("DebugControls")]
+    [Header("Debug Controls")]
     [SerializeField] private float _oxygenExchangePPM;
     [SerializeField] private float _oxygenMaxDiffusePPM;
     [SerializeField] private float _nitrateDrainPPM;
@@ -22,27 +16,54 @@ public class Aquarium : MonoBehaviour
     [SerializeField] private bool _tickTank;
     [SerializeField] private float _tickTime;
 
+    [SerializeField]
+
+    private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
+    private List<IAquariumProcess> _aquariumProcesses;
+
+    // events
+    public Action OnParameterUpdate;
+
+    private void Awake()
+    {
+        _aquariumProcesses = GetComponents<IAquariumProcess>().ToList();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        _parameters.Add(Parameter.Oxygen, 0f);
+        _parameters.Add(Parameter.Ammonia, 0f);
+        _parameters.Add(Parameter.Nitrite, 0f);
+        _parameters.Add(Parameter.Nitrate, 0f);
+
         StartCoroutine(Tick());
     }
 
-    private void CalculateAmmoniaConsumingBacteria()
+    public float AccessParameterValue(Parameter targetParameter)
     {
-        
+        float targetValue;
+        if (!_parameters.TryGetValue(targetParameter, out targetValue))
+        {
+            Debug.LogError("Aquarium ERROR: failed to get " + targetParameter + " value from aquarium");
+        }
+
+        return targetValue;
     }
 
     IEnumerator Tick()
     {
         while (_tickTank)
         {
-            _oxygenPPM = Mathf.Min(_oxygenPPM + _oxygenExchangePPM, _oxygenMaxDiffusePPM);
-            _ammoniaPPM = _ammoniaPPM + _ammoniaAdditionPPM;
+            _parameters[Parameter.Ammonia] += _ammoniaAdditionPPM;
 
-            _nitratePPM = _nitratePPM - _nitrateDrainPPM;
+            foreach (IAquariumProcess process in _aquariumProcesses)
+            {
+                process.DoProcess(_parameters);
+            }
 
+            OnParameterUpdate?.Invoke();
             yield return new WaitForSeconds(_tickTime);
         }
+
     }
 }

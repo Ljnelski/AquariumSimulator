@@ -2,43 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoniaEatingBacteria : MonoBehaviour
+public class AmmoniaEatingBacteria : MonoBehaviour, IAquariumProcess
 {
     [Header("Bacteria")]
-    [SerializeField] private float _bacteriaBiomass;
-    [SerializeField] private float _bacteriaConversionRatePPM;
-    [SerializeField] private float _bacteriaOxygenUseRatePPM;
-    [SerializeField] private float _bacteriaGrowthRate;
-    [SerializeField] private float _bacteriaStarvationFactor;
-    [SerializeField] private float _bacteriaConsumptionRatePPM;
+    [SerializeField] private float _biomass;
+    [SerializeField] private float _conversionFactorPPM;
+    [SerializeField] private float _oxygenConsumptionPPM;
+    [SerializeField] private float _growthRate;
+    [SerializeField] private float _starvationFactor;
+    [SerializeField] private float _consumptionPerBiomassPPM;
 
-    // THIS IS BROKEN, I COPIED IT OVER FROM AQUARIUM SCRIPT DIRECTLY, NEED TO DO MORE WEEK
-    void DoProcess(float _ammoniaPPM, float _oxygenPPM, float _nitratePPM)
+    public void DoProcess(Dictionary<Parameter, float> parameters)
     {
         float actualConsumptionPPM;
-        float requiredConsumptionPPM = _bacteriaBiomass * _bacteriaConsumptionRatePPM;
+        float requiredConsumptionPPM = _biomass * _consumptionPerBiomassPPM;
+
+        float ammoniaPPM;
+        float nitritePPM;
+        float oxygenPPM;
+
+        // Extract the parameter values from the tank, and check they are initalized
+        if(!parameters.TryGetValue(Parameter.Ammonia, out ammoniaPPM))
+        {
+            Debug.LogError("AmmoniaEatingBacteria ERROR: failed to get Ammonia value from aquarium");
+            return;
+        }
+
+        if (!parameters.TryGetValue(Parameter.Nitrite, out nitritePPM))
+        {
+            Debug.LogError("AmmoniaEatingBacteria ERROR: failed to get nitratePPM value from aquarium");
+            return;
+        }
+
+        if(!parameters.TryGetValue(Parameter.Oxygen, out oxygenPPM))
+        {
+            Debug.LogError("AmmoniaEatingBacteria ERROR: failed to get oxygenPPM value from aquarium");
+            return;
+        }
+
+        Debug.Log("Ammonia: " + ammoniaPPM);
+        Debug.Log("Nitrite: " + nitritePPM);
+        Debug.Log("Oxygen: " + oxygenPPM);
 
         // If enough Ammonia for consumption, grow bacteria 
-        if (_ammoniaPPM > requiredConsumptionPPM)
+        if (ammoniaPPM > requiredConsumptionPPM)
         {
-            _bacteriaBiomass = _bacteriaBiomass * _bacteriaGrowthRate;
+            _biomass = _biomass * _growthRate;
             actualConsumptionPPM = requiredConsumptionPPM;
-
         }
         // Bacteria Converts what ammonia is still avalible and dies off
         else
         {
-            actualConsumptionPPM = _ammoniaPPM;
+            actualConsumptionPPM = ammoniaPPM;
 
             // Only calculate bacteria die off if the value is over 0.1f
-            if (_bacteriaBiomass > 0.1f)
+            if (_biomass > 0.1f)
             {
-                _bacteriaBiomass = _bacteriaBiomass - ((requiredConsumptionPPM - actualConsumptionPPM) / _bacteriaConsumptionRatePPM) * _bacteriaStarvationFactor;
+                _biomass = _biomass - ((requiredConsumptionPPM - actualConsumptionPPM) / _consumptionPerBiomassPPM) * _starvationFactor;
             }
         }
         Debug.Log("Ammonia Consumed: " + actualConsumptionPPM);
-        _ammoniaPPM = Mathf.Max(_ammoniaPPM - actualConsumptionPPM, 0f);
-        _nitratePPM = _nitratePPM + (actualConsumptionPPM * _bacteriaConversionRatePPM);
-        _oxygenPPM = Mathf.Max(_oxygenPPM - actualConsumptionPPM * _bacteriaOxygenUseRatePPM, 0f);
+        parameters[Parameter.Ammonia] = Mathf.Max(ammoniaPPM - actualConsumptionPPM, 0f);
+        parameters[Parameter.Nitrite] = nitritePPM + (actualConsumptionPPM * _conversionFactorPPM);
+        parameters[Parameter.Oxygen] = Mathf.Max(oxygenPPM - actualConsumptionPPM * _oxygenConsumptionPPM, 0f);
     }
 }
