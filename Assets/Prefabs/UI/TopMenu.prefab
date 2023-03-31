@@ -552,7 +552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5207862315252668903}
-        m_TargetAssemblyTypeName: ChangeInteractionMode, Assembly-CSharp
+        m_TargetAssemblyTypeName: InteractionModeChanger, Assembly-CSharp
         m_MethodName: ChangeMode
         m_Mode: 1
         m_Arguments:
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5207862315252668903}
+      - m_Target: {fileID: 1875914424272975441}
         m_TargetAssemblyTypeName: InteractionModeChanger, Assembly-CSharp
         m_MethodName: ChangeMode
         m_Mode: 1

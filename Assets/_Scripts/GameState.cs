@@ -25,4 +25,9 @@ public class GameState : MonoBehaviour
             Destroy(this);
         }
     }
+
+    private void Update()
+    {
+        Debug.Log("Current InteractionMode: " + CurrentInteractionMode);
+    }
 }

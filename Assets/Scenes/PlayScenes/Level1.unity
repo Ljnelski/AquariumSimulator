@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -334,6 +334,23 @@ MonoBehaviour:
   _biomass: 0.01
   _conversionFactorPPM: 1
   _oxygenConsumptionPPM: 1
+  _growthRate: 1.005
+  _starvationFactor: 0.75
+  _consumptionPerBiomassPPM: 1
+--- !u!114 &1286019936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286019929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49873cfaf74569349b3f4281a2b2a80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _biomass: 0.01
+  _conversionFactorPPM: 1
   _growthRate: 1.01
   _starvationFactor: 0.75
   _consumptionPerBiomassPPM: 1
@@ -465,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4266578359446005506, guid: c69eedbbabf536b4494eaa3aeeba9d49, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4266578359446005506, guid: c69eedbbabf536b4494eaa3aeeba9d49, type: 3}
       propertyPath: m_AnchorMax.x
@@ -539,8 +556,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5207862315252668903, guid: c69eedbbabf536b4494eaa3aeeba9d49, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c69eedbbabf536b4494eaa3aeeba9d49, type: 3}
 --- !u!1 &2107337346
 GameObject:
@@ -793,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2967920724134528397, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2967920724134528397, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: m_AnchorMax.x
