@@ -7,10 +7,16 @@ public class AquariumParameter : MonoBehaviour
 {
     [Header("GameObject References")]
     [SerializeField] private Aquarium aquarium;
+    [SerializeField] private TMP_Text parameterName;
     [SerializeField] private TMP_Text value;
 
     [Header("Behaviour")]
     [SerializeField] private Parameter parameter;
+
+    private void OnValidate()
+    {
+        parameterName.text = parameter.ToString();
+    }
 
     private void OnEnable()
     {

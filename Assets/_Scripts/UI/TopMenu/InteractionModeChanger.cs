@@ -11,6 +11,7 @@ public class InteractionModeChanger : MonoBehaviour
     {
         Debug.Log("Changing Mode");
         GameState.Instance.CurrentInteractionMode = interaction;
+        Debug.Log(GameState.Instance.CurrentInteractionMode);
     }
     
 }
