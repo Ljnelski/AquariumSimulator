@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIList : MonoBehaviour
 {
+    [SerializeField] private Aquarium _aquarium;
     [SerializeField] private GameObject ListPrefab;
     [SerializeField] private List<StoreItemData> storeItemData = new List<StoreItemData>();
 
@@ -13,7 +14,8 @@ public class UIList : MonoBehaviour
         foreach (StoreItemData itemData in storeItemData)
         {
             storeItem = CreateListItem().GetComponent<StoreItem>();
-            storeItem.LoadData(itemData);      
+            storeItem._aquarium = _aquarium;
+            storeItem.LoadData(itemData);                  
         }
     }
 

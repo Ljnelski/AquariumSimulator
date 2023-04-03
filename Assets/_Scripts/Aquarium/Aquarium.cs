@@ -26,7 +26,7 @@ public class Aquarium : MonoBehaviour
 
     private void Awake()
     {
-        _aquariumProcesses = GetComponents<IAquariumProcess>().ToList();
+        _aquariumProcesses = GetComponentsInChildren<IAquariumProcess>().ToList();
     }
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,7 @@ public class Aquarium : MonoBehaviour
         _parameters.Add(Parameter.Ammonia, 0f);
         _parameters.Add(Parameter.Nitrite, 0f);
         _parameters.Add(Parameter.Nitrate, 0f);
+        _parameters.Add(Parameter.Ph, 7f);
 
         StartCoroutine(Tick());
     }
@@ -50,6 +51,21 @@ public class Aquarium : MonoBehaviour
         return targetValue;
     }
 
+    public Transform FindObject(string name)
+    {
+        Transform target = transform.Find(name);
+        if (target == null)
+        {
+            Debug.LogError("Aquarium Error: Could not find object with name of: " + name);
+            return null;
+        }
+        else
+        {
+            return target;
+        }
+    }
+
+
     IEnumerator Tick()
     {
         while (_tickTank)
@@ -64,6 +80,5 @@ public class Aquarium : MonoBehaviour
             OnParameterUpdate?.Invoke();
             yield return new WaitForSeconds(_tickTime);
         }
-
     }
 }
