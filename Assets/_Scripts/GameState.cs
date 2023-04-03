@@ -1,14 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    public static GameState Instance {get; private set;}
+    public static GameState Instance
+    {
+        get 
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<GameObject>().GetComponent<GameState>();
+            }
+            return _instance;
+        }
+    }
+    private static GameState _instance;
 
+    public InteractionMode CurrentInteractionMode
+    {
+        get => _currentInteractionMode;
+        set
+        {
+            _currentInteractionMode = value;
+            OnInteractionModeChange(_currentInteractionMode);
+        }
+    }
+    private InteractionMode _currentInteractionMode;
 
-    public InteractionMode CurrentInteractionMode;
     public Action<InteractionMode> OnInteractionModeChange;
 
     public float Funds;
@@ -16,18 +37,14 @@ public class GameState : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (_instance != null && _instance != this)
         {
-            Instance = this;
+            Destroy(gameObject);
         }
-        else if(Instance == this)
+        else
         {
-            Destroy(this);
+            _instance = this;
         }
-    }
-
-    private void Update()
-    {
-        Debug.Log("Current InteractionMode: " + CurrentInteractionMode);
     }
 }
+
