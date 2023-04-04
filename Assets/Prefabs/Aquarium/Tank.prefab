@@ -341,6 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4931256446089200036}
+  - component: {fileID: 1286019931}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -365,6 +366,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1286019931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931256446089200039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5dbf6ccb8af6c42ac8ef06702c3318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nitrateDrainPPM: 0
+  _nitriteDrainPPM: 0
+  _ammoniaAdditionPPM: 0.1
+  _tickTank: 1
+  _tickTime: 0.5
+  _oxygenExchangePPM: 5
+  _oxygenMaxDiffusePPM: 20
+  _supportedBiomass: 10
 --- !u!1 &4931256446114104062
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,11 +733,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biomass: 0.01
-  _conversionFactorPPM: 1
-  _oxygenConsumptionPPM: 1
+  _minimumBiomass: 0.01
   _growthRate: 1.005
   _starvationFactor: 0.75
-  _consumptionPerBiomassPPM: 1
+  _processPerBiomassFactor: 0.1
+  _ammoniaConsumptionPPM: 1
+  _oxygenConsumptionPPM: 1
+  _nitrateProducedPPM: 1
 --- !u!114 &5529055086930790993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +753,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biomass: 0.01
-  _conversionFactorPPM: 1
+  _minimumBiomass: 0.01
   _growthRate: 1.01
   _starvationFactor: 0.75
-  _consumptionPerBiomassPPM: 1
+  _processPerBiomassFactor: 0
+  _nitriteConsumptionPPM: 0
+  _nitrateProducedPPM: 0

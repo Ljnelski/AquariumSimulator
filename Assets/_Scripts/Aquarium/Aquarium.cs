@@ -7,43 +7,63 @@ using UnityEngine;
 public class Aquarium : MonoBehaviour
 {
     [Header("Debug Controls")]
-    [SerializeField] private float _oxygenExchangePPM;
-    [SerializeField] private float _oxygenMaxDiffusePPM;
     [SerializeField] private float _nitrateDrainPPM;
     [SerializeField] private float _nitriteDrainPPM;
     [SerializeField] private float _ammoniaAdditionPPM;
 
+    [Header("Gameplay")]
     [SerializeField] private bool _tickTank;
     [SerializeField] private float _tickTime;
 
-    [SerializeField]
+    [Header("Aquarium")]
+    [SerializeField] private float _oxygenExchangePPM;
+    [SerializeField] private float _oxygenMaxDiffusePPM;
+    [SerializeField] private float _supportedBiomass;
 
     private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
-    private List<IAquariumObject> _aquariumProcesses;
+    private List<AquariumObject> _aquariumObjects = new List<AquariumObject>();
 
     // events
     public Action OnParameterUpdate;
 
     private void Awake()
     {
-        _aquariumProcesses = GetComponentsInChildren<IAquariumObject>().ToList();
-        Debug.Log(_aquariumProcesses.Count);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        // Initalize Parameters
         _parameters.Add(Parameter.Oxygen, 0f);
         _parameters.Add(Parameter.Ammonia, 0f);
         _parameters.Add(Parameter.Nitrite, 0f);
         _parameters.Add(Parameter.Nitrate, 0f);
         _parameters.Add(Parameter.Ph, 7f);
+        _parameters.Add(Parameter.SupportedBiomass, 0f);
 
+        AquariumObject[] aquariumObjects = GetComponentsInChildren<AquariumObject>();
+
+        for (int i = 0; i < aquariumObjects.Length; i++)
+        {
+            AddAquariumObject(aquariumObjects[i]);
+        }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         StartCoroutine(Tick());
     }
 
-    public void AddAquariumProcess(IAquariumObject newAquariumObject)
+    private void Update()
     {
-        _aquariumProcesses.Add(newAquariumObject);
+        //Debug.Log("SupportedBiomass: " + _parameters[Parameter.SupportedBiomass]);
+    }
+
+    public void AddAquariumObject(AquariumObject newAquariumObject)
+    {
+        // Update Surface Area
+        IBioMedia bioMedia;
+        if(newAquariumObject.TryGetComponent<IBioMedia>(out bioMedia))
+        {
+            _parameters[Parameter.SupportedBiomass] += bioMedia.SupportedBiomass;
+        }
+
+        _aquariumObjects.Add(newAquariumObject);
     }
 
     public float AccessParameterValue(Parameter targetParameter)
@@ -59,8 +79,8 @@ public class Aquarium : MonoBehaviour
 
     public void AddAquariumObject(GameObject AquariumObjectGameObject)
     {
-        IAquariumObject newAquariumObject = AquariumObjectGameObject.GetComponent<IAquariumObject>();
-        AddAquariumProcess(newAquariumObject);
+        AquariumObject newAquariumObject = AquariumObjectGameObject.GetComponent<AquariumObject>();
+        AddAquariumObject(newAquariumObject);
     }
 
     IEnumerator Tick()
@@ -68,8 +88,9 @@ public class Aquarium : MonoBehaviour
         while (_tickTank)
         {
             _parameters[Parameter.Ammonia] += _ammoniaAdditionPPM;
+            _parameters[Parameter.Oxygen] = Mathf.Min(_parameters[Parameter.Oxygen] + _oxygenExchangePPM, _oxygenMaxDiffusePPM);
 
-            foreach (IAquariumObject process in _aquariumProcesses)
+            foreach (AquariumObject process in _aquariumObjects)
             {
                 process.DoProcess(_parameters);
             }

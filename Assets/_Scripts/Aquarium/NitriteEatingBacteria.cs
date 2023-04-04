@@ -1,60 +1,87 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NitriteEatingBacteria : MonoBehaviour, IAquariumObject
+/* Based on the formula on wikipeda here
+ * https://en.wikipedia.org/wiki/Nitrifying_bacteria N02 + H2O -> NO3 + 2H + 2e
+ */
+public class NitriteEatingBacteria : AquariumObject
 {
     [Header("Bacteria")]
     [SerializeField] private float _biomass;
-    [SerializeField] private float _conversionFactorPPM;
+    [SerializeField] private float _minimumBiomass;
     [SerializeField] private float _growthRate;
     [SerializeField] private float _starvationFactor;
-    [SerializeField] private float _consumptionPerBiomassPPM;
+    [SerializeField] private float _processPerBiomassFactor;
 
-    public void DoProcess(Dictionary<Parameter, float> parameters)
+    [Header("Input")]
+    [SerializeField] private float _nitriteConsumptionPPM;
+
+    [Header("Output")]
+    [SerializeField] private float _nitrateProducedPPM;
+
+    public override void DoProcess(Dictionary<Parameter, float> parameters)
     {
-        float actualConsumptionPPM;
-        float requiredConsumptionPPM = _biomass * _consumptionPerBiomassPPM;
+        float requiredNitritePPM = _biomass * _nitriteConsumptionPPM * _processPerBiomassFactor;
+        float expectedNitrateProducedPPM = _biomass * _nitrateProducedPPM * _processPerBiomassFactor;
 
-        float nitritePPM;
-        float nitratePPM;
+        float actualNitriteConsumptionPPM;
+        float actualNitrateProduced;
 
-        // Extract the parameter values from the tank, and check they are initalized
-        if (!parameters.TryGetValue(Parameter.Nitrite, out nitritePPM))
+        float availableNitritePPM;
+        float availableNitratePPM;
+
+        bool hasLimitingFactor = false;
+        float processEfficiency = 1;
+
+        // Extract the parameter values from the tank
+        if (!TryToGetParameter(parameters, Parameter.Nitrite, out availableNitritePPM)) return;
+        if (!TryToGetParameter(parameters, Parameter.Nitrate, out availableNitratePPM)) return;
+
+
+        // Determine limiting factor for conversion
+
+        // Not enough Nitrite
+        if (requiredNitritePPM > availableNitritePPM)
         {
-            Debug.LogError("NitriteEatingBacteria ERROR: failed to get nitratePPM value from aquarium");
-            return;
-        }
-
-        if(!parameters.TryGetValue(Parameter.Nitrate, out nitratePPM))
-        {
-            Debug.LogError("NitriteEatingBacteria ERROR: failed to get nitratePPM value from aquarium");
-            return;
-        }
-
-        //Debug.Log("Ammonia: " + ammoniaPPM);
-        //Debug.Log("Nitrite: " + nitritePPM);
-        //Debug.Log("Oxygen: " + oxygenPPM);
-
-        // If enough Nitrite for consumption, grow bacteria 
-        if (nitritePPM > requiredConsumptionPPM)
-        {
-            _biomass = _biomass * _growthRate;
-            actualConsumptionPPM = requiredConsumptionPPM;
-        }
-        // Bacteria Converts what ammonia is still avalible and dies off
-        else
-        {
-            actualConsumptionPPM = nitritePPM;
-
-            // Only calculate bacteria die off if the value is over 0.1f
-            if (_biomass > 0.1f)
+            hasLimitingFactor = true;
+            float calculatedEfficiency = availableNitritePPM / requiredNitritePPM;
+            if (calculatedEfficiency < processEfficiency)
             {
-                _biomass = _biomass - ((requiredConsumptionPPM - actualConsumptionPPM) / _consumptionPerBiomassPPM) * _starvationFactor;
+                processEfficiency = calculatedEfficiency;
             }
         }
-        //Debug.Log("Ammonia Consumed: " + actualConsumptionPPM);
-        parameters[Parameter.Nitrite] = Mathf.Max(nitritePPM - actualConsumptionPPM, 0f);
-        parameters[Parameter.Nitrate] = nitratePPM + (actualConsumptionPPM * _conversionFactorPPM);
+
+        // Log the effiency
+        if (hasLimitingFactor)
+        {
+            Debug.Log("Missing Inputs can only complete process with  a efficiency of " + processEfficiency);
+        }
+
+
+        // Calculate the Growth of the bacteria               
+        if (hasLimitingFactor) // if there is a limiting factor then kill the bacteria that is in excess;
+        {
+            // Only calculate bacteria die off if the value is over 0.1f
+            if (_biomass > _minimumBiomass)
+            {
+                Debug.Log("Process Efficiency: " + processEfficiency);
+                // calculate amount of bacteria that don't have enough 'food'
+                float excessBacteria = _biomass * (1 - processEfficiency);
+                
+                // kill the excess bacteria
+                _biomass = _biomass - excessBacteria * _starvationFactor;
+            }
+        }
+        else // Grow bacteria
+        {
+            _biomass = _biomass * _growthRate;
+        }
+
+        // Calculate the input and outputs to the aquarium system
+        actualNitriteConsumptionPPM = requiredNitritePPM * processEfficiency;
+        actualNitrateProduced = expectedNitrateProducedPPM * processEfficiency;
+
+        parameters[Parameter.Nitrite] = availableNitritePPM - actualNitriteConsumptionPPM;
+        parameters[Parameter.Nitrate] = availableNitratePPM + actualNitrateProduced;
     }
 }

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public interface IAquariumObject
+
+internal interface IBioMedia
 {
-    public void DoProcess(Dictionary<Parameter, float> parameters);
+    public float SupportedBiomass { get; }
 }
+

@@ -11,5 +11,6 @@ public enum Parameter
     Nitrate,
     Oxygen,    
     Ph,
+    SupportedBiomass,
 }
 
