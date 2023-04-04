@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0704e783565a88e46ad9c4a2cf9d881b, type: 3}
   m_Name: Rock Tall
   m_EditorClassIdentifier: 
-  ItemName: Rock Tall
-  ItemDescription: Aquarium Rock provides surface area for bacteria to grow, can
-    also affect Ph
-  ItemCost: 10
-  ItemIcon: {fileID: 0}
+  Name: Rock Tall
+  Description: 
+  Cost: 0
+  Icon: {fileID: 0}
+  AquariumObjectPrefab: {fileID: 4647389080675919570, guid: 6aff9954aedd65742b6639bfa6acbc0d, type: 3}

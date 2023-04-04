@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,51 +10,40 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     public Aquarium _aquarium;
 
-    [SerializeField] private TMP_Text ItemName;
-    [SerializeField] private TMP_Text ItemDescription;
-    [SerializeField] private TMP_Text ItemCost;
+    [SerializeField] private TMP_Text _objectName;
+    [SerializeField] private TMP_Text _objectDescription;
+    [SerializeField] private TMP_Text _objectCost;
 
-    [SerializeField] private Material itemMaterial;
-    [SerializeField] private Material highlightMaterial;
-
-    [SerializeField] private Image ItemIcon;
+    [SerializeField] private Image _objectIcon;
 
     // This is the gameobject in the scene that is paired to the store Item Data scriptable object
-    private GameObject pairedItem;
+    private GameObject _aquariumObjectPrefab;
+    private GameObject _instantiatedAquariumObject;
 
-    public void LoadData(StoreItemData data)
+    public void LoadData(AquariumObjectData data)
     {
-        ItemName.text = data.ItemName;
-        ItemDescription.text = data.ItemDescription;
-        ItemCost.text = "$" + data.ItemCost;
-       
-        Transform itemInAquarium = _aquarium.FindObject(data.ItemName);
-        if (itemInAquarium == null)
-        {
-            Debug.LogError("StoreItem ERROR: No Aquarium Item Found with name: " + data.ItemName);
-        }
-        else
-        {
-            pairedItem = _aquarium.FindObject(data.ItemName).gameObject;
-            itemMaterial = pairedItem.GetComponent<Material>();
-        }
+        _objectName.text = data.Name;
+        _objectDescription.text = data.Description;
+        _objectCost.text = "$" + data.Cost;
+
+        _aquariumObjectPrefab = data.AquariumObjectPrefab;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        pairedItem.SetActive(true);
-        pairedItem.GetComponent<MeshRenderer>().materials[0] = highlightMaterial;
+        _instantiatedAquariumObject = Instantiate(_aquariumObjectPrefab);
+        _instantiatedAquariumObject.GetComponent<UnplacedObject>().HighlightObject();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        pairedItem.GetComponent<MeshRenderer>().materials[0] = itemMaterial;
-        pairedItem.SetActive(false);
+        Destroy(_instantiatedAquariumObject);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        pairedItem.SetActive(true);
+        _instantiatedAquariumObject.GetComponent<UnplacedObject>().PlaceObject();
+        _aquarium.AddAquariumObject(_instantiatedAquariumObject);
         gameObject.SetActive(false);
     }
 }

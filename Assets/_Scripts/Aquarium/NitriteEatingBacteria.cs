@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NitriteEatingBacteria : MonoBehaviour, IAquariumProcess
+public class NitriteEatingBacteria : MonoBehaviour, IAquariumObject
 {
     [Header("Bacteria")]
     [SerializeField] private float _biomass;

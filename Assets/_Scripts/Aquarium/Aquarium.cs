@@ -19,14 +19,15 @@ public class Aquarium : MonoBehaviour
     [SerializeField]
 
     private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
-    private List<IAquariumProcess> _aquariumProcesses;
+    private List<IAquariumObject> _aquariumProcesses;
 
     // events
     public Action OnParameterUpdate;
 
     private void Awake()
     {
-        _aquariumProcesses = GetComponentsInChildren<IAquariumProcess>().ToList();
+        _aquariumProcesses = GetComponentsInChildren<IAquariumObject>().ToList();
+        Debug.Log(_aquariumProcesses.Count);
     }
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,11 @@ public class Aquarium : MonoBehaviour
         StartCoroutine(Tick());
     }
 
+    public void AddAquariumProcess(IAquariumObject newAquariumObject)
+    {
+        _aquariumProcesses.Add(newAquariumObject);
+    }
+
     public float AccessParameterValue(Parameter targetParameter)
     {
         float targetValue;
@@ -51,20 +57,11 @@ public class Aquarium : MonoBehaviour
         return targetValue;
     }
 
-    public Transform FindObject(string name)
+    public void AddAquariumObject(GameObject AquariumObjectGameObject)
     {
-        Transform target = transform.Find(name);
-        if (target == null)
-        {
-            Debug.LogError("Aquarium Error: Could not find object with name of: " + name);
-            return null;
-        }
-        else
-        {
-            return target;
-        }
+        IAquariumObject newAquariumObject = AquariumObjectGameObject.GetComponent<IAquariumObject>();
+        AddAquariumProcess(newAquariumObject);
     }
-
 
     IEnumerator Tick()
     {
@@ -72,7 +69,7 @@ public class Aquarium : MonoBehaviour
         {
             _parameters[Parameter.Ammonia] += _ammoniaAdditionPPM;
 
-            foreach (IAquariumProcess process in _aquariumProcesses)
+            foreach (IAquariumObject process in _aquariumProcesses)
             {
                 process.DoProcess(_parameters);
             }

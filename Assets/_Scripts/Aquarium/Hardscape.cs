@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hardscape : MonoBehaviour, IAquariumProcess
+public class Hardscape : MonoBehaviour, IAquariumObject
 {
     [Header("Hardscape")]
     [SerializeField] float phLean;

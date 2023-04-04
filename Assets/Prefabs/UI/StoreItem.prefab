@@ -52,12 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aquarium: {fileID: 0}
-  ItemName: {fileID: 7280647208196563657}
-  ItemDescription: {fileID: 7280647207899121116}
-  ItemCost: {fileID: 7635821368967263956}
-  itemMaterial: {fileID: 0}
-  highlightMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
-  ItemIcon: {fileID: 7280647208694907268}
+  _objectName: {fileID: 7280647208196563657}
+  _objectDescription: {fileID: 7280647207899121116}
+  _objectCost: {fileID: 7635821368967263956}
+  _objectIcon: {fileID: 7280647208694907268}
 --- !u!114 &4763650897961910517
 MonoBehaviour:
   m_ObjectHideFlags: 0
