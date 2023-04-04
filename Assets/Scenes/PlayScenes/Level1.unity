@@ -329,30 +329,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1286019929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4931256446089200039, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+--- !u!114 &1286019931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1286019931, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
   m_PrefabInstance: {fileID: 4931256444808305406}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1286019931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286019929}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c5dbf6ccb8af6c42ac8ef06702c3318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _oxygenExchangePPM: 5
-  _oxygenMaxDiffusePPM: 0
-  _nitrateDrainPPM: 0
-  _nitriteDrainPPM: 0
-  _ammoniaAdditionPPM: 0.1
-  _tickTank: 1
-  _tickTime: 0.5
 --- !u!1 &1293828167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1268,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 555644342}
     m_Modifications:
+    - target: {fileID: 4497591262441338609, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _biomass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497591262441338609, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _growthRate
+      value: 1.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497591262441338609, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _minimumBiomass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4931256446089200036, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1329,13 +1328,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
-    - target: {fileID: 4966609376267410319, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
+    - target: {fileID: 5529055086930790993, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _biomass
+      value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 4986046565020809593, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_RootOrder
+    - target: {fileID: 5529055086930790993, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _growthRate
+      value: 1.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529055086930790993, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _minimumBiomass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529055086930790993, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _nitrateProducedPPM
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529055086930790993, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _nitriteConsumptionPPM
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529055086930790993, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: _processPerBiomassFactor
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}

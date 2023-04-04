@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a9b83fcd9d0f5449e4543e161df464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phLean: 0.001
-  ammoniaLeachPPM: 0
+  _surfaceArea: 18
+  _phLean: -0.005
+  _ammoniaLeachPPM: 0
 --- !u!114 &3280347350568893596
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class AquariumObjectData : ScriptableObject
             return;
         }
 
-        IAquariumObject aquariumObjectScript = AquariumObjectPrefab.GetComponent<IAquariumObject>();
+        AquariumObject aquariumObjectScript = AquariumObjectPrefab.GetComponent<AquariumObject>();
 
         if(aquariumObjectScript == null)
         {

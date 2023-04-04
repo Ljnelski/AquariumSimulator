@@ -3,30 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hardscape : MonoBehaviour, IAquariumObject
+public class Hardscape : AquariumObject, IBioMedia
 {
     [Header("Hardscape")]
-    [SerializeField] float phLean;
-    [SerializeField] float ammoniaLeachPPM;
+    [SerializeField] private float _surfaceArea;
+    [SerializeField] private float _phLean;
+    [SerializeField] private float _ammoniaLeachPPM;
 
-    public void DoProcess(Dictionary<Parameter, float> parameters)
+    public float SupportedBiomass => _surfaceArea;
+
+    public override void DoProcess(Dictionary<Parameter, float> parameters)
     {
         float ph;
         float ammoniaPPM;
 
-        if (!parameters.TryGetValue(Parameter.Ammonia, out ammoniaPPM))
-        {
-            Debug.LogError("Hardscape ERROR: failed to get Ammonia value from aquarium");
-            return;
-        }
 
-        if (!parameters.TryGetValue(Parameter.Ph, out ph))
-        {
-            Debug.LogError("Hardscape ERROR: failed to get nitratePPM value from aquarium");
-            return;
-        }
+        if(!TryToGetParameter(parameters, Parameter.Ammonia, out ammoniaPPM)) return;
+        if(!TryToGetParameter(parameters, Parameter.Ph, out ph)) return;        
 
-        parameters[Parameter.Ph] = Mathf.Min(14f, Mathf.Max(0f, ph + phLean));
-        parameters[Parameter.Ammonia] = Mathf.Max(ammoniaPPM + ammoniaLeachPPM, 0f);
+        parameters[Parameter.Ph] = Mathf.Min(14f, Mathf.Max(0f, ph + _phLean));
+        parameters[Parameter.Ammonia] = Mathf.Max(ammoniaPPM + _ammoniaLeachPPM, 0f);
     }   
 }
