@@ -19,14 +19,15 @@ public class Aquarium : MonoBehaviour
     [SerializeField]
 
     private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
-    private List<IAquariumProcess> _aquariumProcesses;
+    private List<IAquariumObject> _aquariumProcesses;
 
     // events
     public Action OnParameterUpdate;
 
     private void Awake()
     {
-        _aquariumProcesses = GetComponents<IAquariumProcess>().ToList();
+        _aquariumProcesses = GetComponentsInChildren<IAquariumObject>().ToList();
+        Debug.Log(_aquariumProcesses.Count);
     }
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,14 @@ public class Aquarium : MonoBehaviour
         _parameters.Add(Parameter.Ammonia, 0f);
         _parameters.Add(Parameter.Nitrite, 0f);
         _parameters.Add(Parameter.Nitrate, 0f);
+        _parameters.Add(Parameter.Ph, 7f);
 
         StartCoroutine(Tick());
+    }
+
+    public void AddAquariumProcess(IAquariumObject newAquariumObject)
+    {
+        _aquariumProcesses.Add(newAquariumObject);
     }
 
     public float AccessParameterValue(Parameter targetParameter)
@@ -50,13 +57,19 @@ public class Aquarium : MonoBehaviour
         return targetValue;
     }
 
+    public void AddAquariumObject(GameObject AquariumObjectGameObject)
+    {
+        IAquariumObject newAquariumObject = AquariumObjectGameObject.GetComponent<IAquariumObject>();
+        AddAquariumProcess(newAquariumObject);
+    }
+
     IEnumerator Tick()
     {
         while (_tickTank)
         {
             _parameters[Parameter.Ammonia] += _ammoniaAdditionPPM;
 
-            foreach (IAquariumProcess process in _aquariumProcesses)
+            foreach (IAquariumObject process in _aquariumProcesses)
             {
                 process.DoProcess(_parameters);
             }
@@ -64,6 +77,5 @@ public class Aquarium : MonoBehaviour
             OnParameterUpdate?.Invoke();
             yield return new WaitForSeconds(_tickTime);
         }
-
     }
 }
