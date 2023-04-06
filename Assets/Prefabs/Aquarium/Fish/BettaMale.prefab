@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 8756228022820606433}
   - component: {fileID: 919132148263817096}
   - component: {fileID: 1344194028442792641}
+  - component: {fileID: 236703749}
+  - component: {fileID: 236703745}
   m_Layer: 0
   m_Name: BettaMale
   m_TagString: Untagged
@@ -144,3 +146,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeb12d79a0960649b6be3fc54203224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodConsumeRate: 1
+  oxygenConsumeRate: 1
+  health: 100
+  hungerAmount: 0
+  hungerIncreaseRate: 0
+  requiredPh: 0
+  requiredTemperature: 0
+--- !u!143 &236703749
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272987523647228763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.94
+  m_Radius: 0.92
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0.39}
+--- !u!114 &236703745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272987523647228763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2aaa5a627e6f8b4199cd6fb4b01c3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.03
+  directionChangeInterval: 0.01
+  maxHeadingChange: 1
