@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: d03f700672a1f4f45aab37440befb401, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -264,7 +264,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -322,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082149155}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -0.78, y: 4.31, z: 1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1076,7 +1076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107337346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.32, y: 2.39, z: -7.46}
+  m_LocalPosition: {x: -1.32, y: 2.39, z: -7.851}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1178,12 +1178,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2027550578450222497, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550578450222497, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550578450222497, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550578450222497, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550578450222503, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550579058859008, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550579058859008, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.41960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550579058859008, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Color.r
+      value: 0.33333334
+      objectReference: {fileID: 0}
     - target: {fileID: 2027550579250342372, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2027550579250342372, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550579403762539, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550579403762539, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027550579403762539, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2027550579613688090, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
@@ -1280,22 +1324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 555644342}
     m_Modifications:
-    - target: {fileID: 4931256444986502682, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: TankWall
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931256445588823136, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: TankWall
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931256445734858395, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: TankWall
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931256445789595451, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: TankWall
-      objectReference: {fileID: 0}
     - target: {fileID: 4931256446089200036, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1343,18 +1371,6 @@ PrefabInstance:
     - target: {fileID: 4931256446089200039, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
       propertyPath: m_Name
       value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931256446089200039, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931256446114104062, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: TankWall
-      objectReference: {fileID: 0}
-    - target: {fileID: 5708384682529712110, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
