@@ -125,6 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70df71e18c471441a11899cccc966d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodConsumeRate: 1
+  oxygenConsumeRate: 1
+  health: 100
+  hungerAmount: 0
+  hungerIncreaseRate: 0
+  requiredPh: 0
+  requiredTemperature: 0
 --- !u!1 &4551386927042754098
 GameObject:
   m_ObjectHideFlags: 0
