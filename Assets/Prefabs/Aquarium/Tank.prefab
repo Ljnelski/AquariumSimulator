@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4931256444986502683}
   - component: {fileID: 4931256444986502678}
   - component: {fileID: 4931256444986502681}
+  - component: {fileID: 1185552907}
   m_Layer: 0
   m_Name: Bottom
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1185552907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931256444986502682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4931256445588823136
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   - component: {fileID: 4931256445588823137}
   - component: {fileID: 4931256445588823132}
   - component: {fileID: 4931256445588823135}
+  - component: {fileID: 418507671}
   m_Layer: 0
   m_Name: RightWall
   m_TagString: Untagged
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &418507671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931256445588823136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4931256445734858395
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +205,7 @@ GameObject:
   - component: {fileID: 4931256445734858392}
   - component: {fileID: 4931256445734858391}
   - component: {fileID: 4931256445734858390}
+  - component: {fileID: 576925336}
   m_Layer: 0
   m_Name: FrontWall
   m_TagString: Untagged
@@ -249,6 +278,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &576925336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931256445734858395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4931256445789595451
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +302,7 @@ GameObject:
   - component: {fileID: 4931256445789595448}
   - component: {fileID: 4931256445789595447}
   - component: {fileID: 4931256445789595446}
+  - component: {fileID: 128614767}
   m_Layer: 0
   m_Name: LeftWall
   m_TagString: Untagged
@@ -332,6 +375,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &128614767
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931256445789595451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4931256446089200039
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +400,7 @@ GameObject:
   - component: {fileID: 1286019931}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: FishTank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,6 +453,7 @@ GameObject:
   - component: {fileID: 4931256446114104063}
   - component: {fileID: 4931256446114104058}
   - component: {fileID: 4931256446114104061}
+  - component: {fileID: 873423617}
   m_Layer: 0
   m_Name: BackWall
   m_TagString: Untagged
@@ -469,6 +526,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &873423617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931256446114104062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4931256446173789727
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,9 +802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff320ba6b3b90e5469290867382dbb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _biomass: 0.01
-  _minimumBiomass: 0.01
-  _growthRate: 1.005
+  _biomass: 0.1
+  _minimumBiomass: 0.1
+  _growthRate: 1.008
   _starvationFactor: 0.75
   _processPerBiomassFactor: 0.1
   _ammoniaConsumptionPPM: 1
@@ -752,10 +822,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49873cfaf74569349b3f4281a2b2a80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _biomass: 0.01
-  _minimumBiomass: 0.01
-  _growthRate: 1.01
+  _biomass: 0.1
+  _minimumBiomass: 0.1
+  _growthRate: 1.005
   _starvationFactor: 0.75
-  _processPerBiomassFactor: 0
-  _nitriteConsumptionPPM: 0
-  _nitrateProducedPPM: 0
+  _processPerBiomassFactor: 0.1
+  _nitriteConsumptionPPM: 1
+  _nitrateProducedPPM: 1
