@@ -18,7 +18,7 @@ public class FishController : MonoBehaviour
 
         // Set random initial rotation
         heading = Random.Range(0, 360);
-        transform.eulerAngles = new Vector3(-90, heading, 0);
+        transform.eulerAngles = new Vector3(transform.rotation.x, heading, transform.rotation.z);
 
         StartCoroutine(NewHeading());
     }
@@ -71,6 +71,6 @@ public class FishController : MonoBehaviour
         var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
         var ceil = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
         heading = Random.Range(floor, ceil);
-        targetRotation = new Vector3(-90, heading, 0);
+        targetRotation = new Vector3(transform.rotation.x, heading, transform.rotation.z);
     }
 }
