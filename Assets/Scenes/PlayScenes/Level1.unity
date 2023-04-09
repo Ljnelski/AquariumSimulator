@@ -2013,6 +2013,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 555644342}
     m_Modifications:
+    - target: {fileID: 193838552, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 319449126, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331443140, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 399336787, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 520967734, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 990938061, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040248928, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311560657, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594250921, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621603047, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830971055, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006366596, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030589874, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931256444986502682, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931256445588823136, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931256445734858395, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931256445789595451, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4931256446089200036, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2060,6 +2128,22 @@ PrefabInstance:
     - target: {fileID: 4931256446089200039, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931256446114104062, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931256446173789727, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708384682529712110, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312107789103887795, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1368134686700069609}
   - component: {fileID: 3825913944979346979}
   - component: {fileID: 837358840190135967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,9 +109,9 @@ GameObject:
   - component: {fileID: 167170361666191046}
   - component: {fileID: 8726849619829945250}
   - component: {fileID: -4935948185919454723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock Flat
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

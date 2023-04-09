@@ -11,10 +11,29 @@ public class FishController : MonoBehaviour
     CharacterController controller;
     float heading;
     Vector3 targetRotation;
-    // Start is called before the first frame update
+
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    // If the fish collides with an object, apply a force to move it away from the collision point
+    //    Vector3 normal = collision.contacts[0].normal;
+    //    GetComponent<Rigidbody>().AddForce(normal * 10, ForceMode.Impulse);
+    //    Debug.Log("Entered collision");
+    //}
+
+    //void OnCollisionExit(Collision collision)
+    //{
+    //    // When the fish exits a collision, stop applying the force to move it away
+    //    GetComponent<Rigidbody>().velocity = Vector3.zero;
+    //}
+
+
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
 
         // Set random initial rotation
         heading = Random.Range(0, 360);
@@ -23,37 +42,25 @@ public class FishController : MonoBehaviour
         StartCoroutine(NewHeading());
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    //if (collision.transform.CompareTag("TankWall"))
-    //    //{
-    //        transform.forward = -transform.forward;
-    //        transform.right = -transform.right;
-    //        Debug.Log("YOO");
-    //    //}
-    //}
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.transform.CompareTag("TankWall"))
         {
-         //   transform.eulerAngles = new Vector3(-90, 0, -transform.rotation.z);
-
             transform.forward = -transform.forward;
-        //transform.right = -transform.right;
-        //Debug.Log("YOO");
         }
+        //else if (hit.transform.CompareTag("Obstacle"))
+        //{
+        //    Debug.Log("HO HO HO");
+        //    controller.enableOverlapRecovery= false;
+        //    //disable colliders for when hitting a rock or sth? 
+        //    //gameObject.GetComponent<Collider>().enabled = false;
+        //}
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
         var forward = transform.TransformDirection(Vector3.right);
-        //if (transform.position.x >= 3 || transform.position.x <= -3 || transform.position.z >= 1.5 || transform.position.z <= -1.5)
-        //{
-        //    transform.forward = -transform.forward;
-        //}
         controller.Move(forward * speed);
     }
 
@@ -73,4 +80,6 @@ public class FishController : MonoBehaviour
         heading = Random.Range(floor, ceil);
         targetRotation = new Vector3(transform.rotation.x, heading, transform.rotation.z);
     }
+
+
 }
