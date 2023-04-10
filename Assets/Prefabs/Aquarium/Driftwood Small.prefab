@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a9b83fcd9d0f5449e4543e161df464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshHighlighter: {fileID: -4914460000622899960}
   _surfaceArea: 5
   _phLean: 0.005
   _ammoniaLeachPPM: 0.005
@@ -160,5 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mesh: {fileID: 6834998046150369879}
-  _unplacedMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
+  _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
+  _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
   _placedMaterial: {fileID: 2100000, guid: a1d3ea07a7612164b945e0a8eed613aa, type: 2}

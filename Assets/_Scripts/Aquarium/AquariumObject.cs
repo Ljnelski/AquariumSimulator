@@ -9,9 +9,11 @@ using UnityEngine;
 
 public abstract class AquariumObject : MonoBehaviour
 {
-    public abstract void DoProcess(Dictionary<Parameter, float> parameters);
+    [SerializeField] private HighlightMesh _meshHighlighter;
 
-    public bool TryToGetParameter(Dictionary<Parameter, float> parameters, Parameter targetParameter , out float value)
+    private StoreItem _storeItem;
+
+    protected bool TryToGetParameter(Dictionary<Parameter, float> parameters, Parameter targetParameter, out float value)
     {
         if (!parameters.TryGetValue(targetParameter, out value))
         {
@@ -20,4 +22,32 @@ public abstract class AquariumObject : MonoBehaviour
         }
         return true;
     }
+
+    public abstract void DoProcess(Dictionary<Parameter, float> parameters);   
+
+    public virtual void HightlightValid()
+    {
+        _meshHighlighter.ApplyPositiveHighlight();
+    }
+
+    public virtual void HightLightInvalid()
+    {
+        _meshHighlighter.ApplyNegativeHighlight();
+    }
+
+    public virtual void RemoveHighlight()
+    {
+        _meshHighlighter.RemoveHighlight();
+    }
+
+    public void Remove()
+    {
+        _storeItem.gameObject.SetActive(true);
+        Destroy(gameObject);
+    }
+    public void InjectStoreItem(StoreItem storeItem)
+    {
+        _storeItem = storeItem;
+    }
+
 }

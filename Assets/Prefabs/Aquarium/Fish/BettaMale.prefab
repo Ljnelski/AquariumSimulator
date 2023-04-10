@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mesh: {fileID: 1088013537017311707}
-  _unplacedMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
+  _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
+  _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
   _placedMaterial: {fileID: -2634013423457942632, guid: 5bfc467673fe3784092abd93e83173fe, type: 3}
-  objectCollider: {fileID: 0}
 --- !u!114 &1344194028442792641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeb12d79a0960649b6be3fc54203224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshHighlighter: {fileID: 919132148263817096}
   foodConsumeRate: 1
   oxygenConsumeRate: 1
   health: 100

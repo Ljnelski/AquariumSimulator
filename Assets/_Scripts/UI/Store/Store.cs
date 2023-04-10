@@ -6,11 +6,15 @@ public class Store : MonoBehaviour
 {
     [SerializeField] private GameObject _storeUI;
     // Start is called before the first frame update
-    void Start()
-    {
-    }
+    
 
     private void OnEnable()
+    {
+        if (GameState.Instance != null) {
+            GameState.Instance.OnInteractionModeChange += SetStoreVisable;
+        }
+    }
+    void Start()
     {
         GameState.Instance.OnInteractionModeChange += SetStoreVisable;
     }

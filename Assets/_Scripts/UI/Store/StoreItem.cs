@@ -32,17 +32,20 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         _instantiatedAquariumObject = Instantiate(_aquariumObjectPrefab);
-        _instantiatedAquariumObject.GetComponent<UnplacedObject>().HighlightObject();
+        _instantiatedAquariumObject.GetComponent<HighlightMesh>().ApplyPositiveHighlight();
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
-        Destroy(_instantiatedAquariumObject);
+    {       
+        Destroy(_instantiatedAquariumObject);        
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        _instantiatedAquariumObject.GetComponent<UnplacedObject>().PlaceObject();
+        AquariumObject aquariumObject = _instantiatedAquariumObject.GetComponent<AquariumObject>();
+        aquariumObject.RemoveHighlight();
+        aquariumObject.InjectStoreItem(this);
+
         _aquarium.AddAquariumObject(_instantiatedAquariumObject);
         gameObject.SetActive(false);
     }
