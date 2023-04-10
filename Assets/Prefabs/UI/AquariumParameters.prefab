@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e989c03bdd75498af8ee851572459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _aquarium: {fileID: 0}
   ListPrefab: {fileID: 0}
   storeItemData: []
 --- !u!1001 &1858447441330911574

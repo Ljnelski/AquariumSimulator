@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2728374388632089121}
   - component: {fileID: 6466036114202048366}
   - component: {fileID: 3280347350568893596}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock Tall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 8837700069473131078}
   - component: {fileID: 6719694082764238476}
   - component: {fileID: 7189894763499296304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

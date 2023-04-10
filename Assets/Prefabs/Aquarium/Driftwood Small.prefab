@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6834998046150369872}
   - component: {fileID: 6834998046150369879}
   - component: {fileID: 6834998046150369878}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,9 +109,9 @@ GameObject:
   - component: {fileID: 1439883988314696123}
   - component: {fileID: 787745548830295286}
   - component: {fileID: -4914460000622899960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Driftwood Small
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

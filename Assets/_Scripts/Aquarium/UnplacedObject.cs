@@ -15,4 +15,5 @@ public class UnplacedObject : MonoBehaviour
     {
         _mesh.material = _placedMaterial;
     }
+
 }
