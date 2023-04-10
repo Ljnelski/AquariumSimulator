@@ -6,29 +6,29 @@ using UnityEngine;
 public class AquariumParameter : MonoBehaviour
 {
     [Header("GameObject References")]
-    [SerializeField] private Aquarium aquarium;
-    [SerializeField] private TMP_Text parameterName;
-    [SerializeField] private TMP_Text value;
+    [SerializeField] private Aquarium _aquarium;
+    [SerializeField] private TMP_Text _parameterName;
+    [SerializeField] private TMP_Text _value;
 
     [Header("Behaviour")]
     [SerializeField] private Parameter parameter;
 
     private void OnValidate()
     {
-        parameterName.text = parameter.ToString();
+        _parameterName.text = parameter.ToString();
     }
 
     private void OnEnable()
     {
-        aquarium.OnParameterUpdate += UpdateValue;
+        _aquarium.OnParameterUpdate += UpdateValue;
     }
     private void UpdateValue()
     {
-        value.text = aquarium.AccessParameterValue(parameter).ToString("n2") + " ppm";
+        _value.text = _aquarium.AccessParameterValue(parameter).ToString("n2") + " ppm";
     }
     private void OnDisable()
     {
-        aquarium.OnParameterUpdate -= UpdateValue;
+        _aquarium.OnParameterUpdate -= UpdateValue;
     }
 
 }

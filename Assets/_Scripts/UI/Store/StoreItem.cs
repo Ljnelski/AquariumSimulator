@@ -20,19 +20,29 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private GameObject _aquariumObjectPrefab;
     private GameObject _instantiatedAquariumObject;
 
+    private float _cost;
+
     public void LoadData(AquariumObjectData data)
     {
         _objectName.text = data.Name;
         _objectDescription.text = data.Description;
         _objectCost.text = "$" + data.Cost;
 
+
+        _cost = data.Cost;
         _aquariumObjectPrefab = data.AquariumObjectPrefab;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _instantiatedAquariumObject = Instantiate(_aquariumObjectPrefab);
-        _instantiatedAquariumObject.GetComponent<HighlightMesh>().ApplyPositiveHighlight();
+        if (GameState.Instance.AvalalibleFunds > _cost)
+        {
+            _instantiatedAquariumObject.GetComponent<HighlightMesh>().ApplyPositiveHighlight();
+        } else
+        {
+            _instantiatedAquariumObject.GetComponent<HighlightMesh>().ApplyNegativeHighlight();
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -42,6 +52,14 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // See if it can be purchased Purchase        
+        if(GameState.Instance.AvalalibleFunds < _cost)
+        {
+            return;
+        }
+
+        GameState.Instance.Purchase(_cost);        
+
         AquariumObject aquariumObject = _instantiatedAquariumObject.GetComponent<AquariumObject>();
         aquariumObject.RemoveHighlight();
         aquariumObject.InjectStoreItem(this);
