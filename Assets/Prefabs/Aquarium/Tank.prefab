@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 193838556}
   - component: {fileID: 193838555}
   - component: {fileID: 193838554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bottom Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 319449130}
   - component: {fileID: 319449129}
   - component: {fileID: 319449128}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 331443144}
   - component: {fileID: 331443143}
   - component: {fileID: 331443142}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 399336791}
   - component: {fileID: 399336790}
   - component: {fileID: 399336789}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bottom Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 520967738}
   - component: {fileID: 520967737}
   - component: {fileID: 520967736}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bottom Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 990938065}
   - component: {fileID: 990938064}
   - component: {fileID: 990938063}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bottom Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1040248932}
   - component: {fileID: 1040248931}
   - component: {fileID: 1040248930}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Right Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 1311560661}
   - component: {fileID: 1311560660}
   - component: {fileID: 1311560659}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Left Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 1594250925}
   - component: {fileID: 1594250924}
   - component: {fileID: 1594250923}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 1621603051}
   - component: {fileID: 1621603050}
   - component: {fileID: 1621603049}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Left Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830971056}
   - component: {fileID: 1830971057}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,7 +1027,7 @@ GameObject:
   - component: {fileID: 2006366600}
   - component: {fileID: 2006366599}
   - component: {fileID: 2006366598}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Right Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 2030589878}
   - component: {fileID: 2030589877}
   - component: {fileID: 2030589876}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Top Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 4931256444986502678}
   - component: {fileID: 4931256444986502681}
   - component: {fileID: 1185552907}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bottom
   m_TagString: TankWall
   m_Icon: {fileID: 0}
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 4931256445588823132}
   - component: {fileID: 4931256445588823135}
   - component: {fileID: 418507671}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightWall
   m_TagString: TankWall
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 4931256445734858391}
   - component: {fileID: 4931256445734858390}
   - component: {fileID: 576925336}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FrontWall
   m_TagString: TankWall
   m_Icon: {fileID: 0}
@@ -1518,7 +1518,7 @@ GameObject:
   - component: {fileID: 4931256445789595447}
   - component: {fileID: 4931256445789595446}
   - component: {fileID: 128614767}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftWall
   m_TagString: TankWall
   m_Icon: {fileID: 0}
@@ -1617,7 +1617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4931256446089200036}
   - component: {fileID: 1286019931}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 4931256446114104058}
   - component: {fileID: 4931256446114104061}
   - component: {fileID: 873423617}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BackWall
   m_TagString: TankWall
   m_Icon: {fileID: 0}
@@ -1771,7 +1771,7 @@ GameObject:
   - component: {fileID: 4931256446173789724}
   - component: {fileID: 4931256446173789723}
   - component: {fileID: 4931256446173789722}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1852,7 +1852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4966609376267410319}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1894,7 +1894,7 @@ GameObject:
   - component: {fileID: 7565825185988644778}
   - component: {fileID: 4961838723672004220}
   - component: {fileID: 3206136723795494311}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaterVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1990,7 +1990,7 @@ GameObject:
   - component: {fileID: 4986046565020809593}
   - component: {fileID: 4497591262441338609}
   - component: {fileID: 5529055086930790993}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bacteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}

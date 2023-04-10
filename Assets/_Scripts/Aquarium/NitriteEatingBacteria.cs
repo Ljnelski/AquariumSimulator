@@ -84,4 +84,16 @@ public class NitriteEatingBacteria : AquariumObject
         parameters[Parameter.Nitrite] = availableNitritePPM - actualNitriteConsumptionPPM;
         parameters[Parameter.Nitrate] = availableNitratePPM + actualNitrateProduced;
     }
+    public override void HightlightValid()
+    {
+        ;
+    }
+    public override void HightLightInvalid()
+    {
+        ;
+    }
+    public override void RemoveHighlight()
+    {
+        ;
+    }
 }

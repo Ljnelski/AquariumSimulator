@@ -116,4 +116,17 @@ public class AmmoniaEatingBacteria : AquariumObject
         parameters[Parameter.Nitrite] = availableNitritePPM + actualNitriteProduced;
         parameters[Parameter.Oxygen] = Mathf.Max(availableOxygenPPM - actualOxygenConsumptionPPM * _oxygenConsumptionPPM, 0f);
     }
+
+    public override void HightlightValid()
+    {
+        ;
+    }
+    public override void HightLightInvalid()
+    {
+        ;
+    }
+    public override void RemoveHighlight()
+    {
+        ;
+    }
 }

@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mesh: {fileID: 7413852618403501019}
-  _unplacedMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
+  _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
+  _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
   _placedMaterial: {fileID: 2100000, guid: 23848d4fcaca2d543a7d19aa154cbfa1, type: 2}
 --- !u!114 &4292575671858140978
 MonoBehaviour:
@@ -127,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f317a94ca7f8b478a833f5bb4a8b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshHighlighter: {fileID: 1956033298870781545}
   ammoniaIntake: 0
   nitriteIntake: 0
   nitrateIntake: 0
