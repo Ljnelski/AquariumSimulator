@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO Move Store to a Scriptable Object
 public class Store : MonoBehaviour
 {
     [SerializeField] private GameObject _storeUI;

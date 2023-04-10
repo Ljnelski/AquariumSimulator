@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Driftwood Large
   Description: 
-  Cost: 0
+  Cost: 42.78
   Icon: {fileID: 0}
   AquariumObjectPrefab: {fileID: 7272751920345273717, guid: adc39f5482c4bf448833f3af9fd02c3b, type: 3}

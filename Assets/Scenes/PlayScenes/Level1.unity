@@ -657,16 +657,32 @@ PrefabInstance:
       propertyPath: aquarium
       value: 
       objectReference: {fileID: 1286019931}
+    - target: {fileID: 1403635935086939047, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
+      propertyPath: _aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
     - target: {fileID: 1560721408781176793, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
+    - target: {fileID: 1560721408781176793, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
+      propertyPath: _aquarium
       value: 
       objectReference: {fileID: 1286019931}
     - target: {fileID: 1901816828168597080, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: aquarium
       value: 
       objectReference: {fileID: 1286019931}
+    - target: {fileID: 1901816828168597080, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
+      propertyPath: _aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
     - target: {fileID: 2967069761758161881, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
+    - target: {fileID: 2967069761758161881, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
+      propertyPath: _aquarium
       value: 
       objectReference: {fileID: 1286019931}
     - target: {fileID: 2967920724134528397, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
@@ -773,8 +789,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4587388273274522926, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
+      propertyPath: _aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
     - target: {fileID: 5194407587421330249, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
+    - target: {fileID: 5194407587421330249, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
+      propertyPath: _aquarium
       value: 
       objectReference: {fileID: 1286019931}
     - target: {fileID: 5535454943105753482, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
@@ -861,7 +885,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4587388273274522926, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
 --- !u!1 &1888341627
 GameObject:
@@ -1254,6 +1279,22 @@ PrefabInstance:
     - target: {fileID: 2374746420273303133, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_Name
       value: GameState
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
+      propertyPath: _tickRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
+      propertyPath: _dailyBudget
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
+      propertyPath: _startingFunds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
+      propertyPath: _minutesPerTick
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303135, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_RootOrder

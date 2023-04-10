@@ -226,9 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855dd4a9e58bc6f4bae1baa5a6a43b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aquarium: {fileID: 0}
-  parameterName: {fileID: 6906409404763236675}
-  value: {fileID: 5700754842105653435}
+  _aquarium: {fileID: 0}
+  _parameterName: {fileID: 6906409404763236675}
+  _value: {fileID: 5700754842105653435}
   parameter: 0
 --- !u!1 &8666714045344788323
 GameObject:
