@@ -12,6 +12,7 @@ public class AquariumParameter : MonoBehaviour
 
     [Header("Behaviour")]
     [SerializeField] private Parameter parameter;
+    [SerializeField] private string suffix = " PPM";
 
     private void OnValidate()
     {
@@ -24,7 +25,7 @@ public class AquariumParameter : MonoBehaviour
     }
     private void UpdateValue()
     {
-        _value.text = _aquarium.AccessParameterValue(parameter).ToString("n2") + " ppm";
+        _value.text = _aquarium.AccessParameterValue(parameter).ToString("n2") + suffix;
     }
     private void OnDisable()
     {
