@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nitrateDrainPPM: 0
   _nitriteDrainPPM: 0
-  _ammoniaAdditionPPM: 0.1
+  _ammoniaAdditionPPM: 0
   _tickTank: 1
   _tickTime: 0.5
   _oxygenExchangePPM: 5
@@ -2024,6 +2024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff320ba6b3b90e5469290867382dbb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshHighlighter: {fileID: 0}
   _biomass: 0.1
   _minimumBiomass: 0.1
   _growthRate: 1.008
@@ -2044,6 +2045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49873cfaf74569349b3f4281a2b2a80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshHighlighter: {fileID: 0}
   _biomass: 0.1
   _minimumBiomass: 0.1
   _growthRate: 1.005
