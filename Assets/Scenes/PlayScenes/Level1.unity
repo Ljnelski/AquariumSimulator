@@ -1290,7 +1290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: _startingFunds
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: _minutesPerTick

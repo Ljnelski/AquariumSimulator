@@ -9,6 +9,7 @@ using UnityEngine;
 
 public abstract class AquariumObject : MonoBehaviour
 {
+    [Header("Aquarium Object")]
     [SerializeField] private HighlightMesh _meshHighlighter;
 
     private StoreItem _storeItem;

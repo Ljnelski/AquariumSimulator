@@ -149,13 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshHighlighter: {fileID: 919132148263817096}
-  foodConsumeRate: 1
-  oxygenConsumeRate: 1
-  health: 100
-  hungerAmount: 0
-  hungerIncreaseRate: 0
-  requiredPh: 0
-  requiredTemperature: 0
+  _maxHealth: 100
+  _foodConsumption: 1
+  _metabolism: 0
+  _oxygenConsumptionPPM: 1
+  _ammoniaProducedPPM: 0.1
+  _maxPh: 7.5
+  _minPh: 6.5
+  _maxTemperature: 24
+  _minTemperature: 28
+  phComfortDisplay: 0
 --- !u!143 &236703749
 CharacterController:
   m_ObjectHideFlags: 0
