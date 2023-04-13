@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2166079994483534130
+--- !u!1 &3321576276532836342
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2166079994483534129}
-  - component: {fileID: 2166079994483534133}
-  - component: {fileID: 2166079994483534134}
-  - component: {fileID: 2166079994483534135}
+  - component: {fileID: 2689577699586534732}
+  - component: {fileID: 1368134686700069609}
+  - component: {fileID: 3825913944979346979}
+  - component: {fileID: 837358840190135967}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -19,36 +19,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2166079994483534129
+--- !u!4 &2689577699586534732
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2166079994483534130}
-  m_LocalRotation: {x: -0.46860206, y: -0.8753584, z: 0.05616024, w: 0.10490851}
+  m_GameObject: {fileID: 3321576276532836342}
+  m_LocalRotation: {x: 0.000000007450581, y: 0.044198304, z: -0.000000026077032, w: 0.99902284}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0800002, y: 2.08, z: 2.0800004}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4528770148466280938}
+  m_Father: {fileID: 167170361666191046}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -166.332, z: 56.323}
---- !u!33 &2166079994483534133
+  m_LocalEulerAnglesHint: {x: 0, y: 5.066, z: 0}
+--- !u!33 &1368134686700069609
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2166079994483534130}
-  m_Mesh: {fileID: -2648691219149191085, guid: 5e050ea61894f3a45aa7147f93b11747, type: 3}
---- !u!23 &2166079994483534134
+  m_GameObject: {fileID: 3321576276532836342}
+  m_Mesh: {fileID: 9090787589619123849, guid: 60b692d01aede344a96e436be56c5d37, type: 3}
+--- !u!23 &3825913944979346979
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2166079994483534130}
+  m_GameObject: {fileID: 3321576276532836342}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1d3ea07a7612164b945e0a8eed613aa, type: 2}
+  - {fileID: 2100000, guid: abf979767b20e5c40a1aa5659736dc74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,21 +84,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2166079994483534135
+--- !u!64 &837358840190135967
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2166079994483534130}
+  m_GameObject: {fileID: 3321576276532836342}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2648691219149191085, guid: 5e050ea61894f3a45aa7147f93b11747, type: 3}
---- !u!1 &7272751920345273717
+  m_Mesh: {fileID: 9090787589619123849, guid: 60b692d01aede344a96e436be56c5d37, type: 3}
+--- !u!1 &8243823347973119196
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,61 +106,63 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4528770148466280938}
-  - component: {fileID: 7411093306905056961}
-  - component: {fileID: -387117975845856546}
+  - component: {fileID: 167170361666191046}
+  - component: {fileID: 8726849619829945250}
+  - component: {fileID: -4935948185919454723}
   m_Layer: 6
-  m_Name: Driftwood Large
+  m_Name: Rock Flat
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4528770148466280938
+--- !u!4 &167170361666191046
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7272751920345273717}
+  m_GameObject: {fileID: 8243823347973119196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8299999, y: 0, z: 0.97999954}
+  m_LocalPosition: {x: -2.4900002, y: 0, z: 0.6499995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2166079994483534129}
+  - {fileID: 2689577699586534732}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7411093306905056961
+--- !u!114 &8726849619829945250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7272751920345273717}
+  m_GameObject: {fileID: 8243823347973119196}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3a9b83fcd9d0f5449e4543e161df464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshHighlighter: {fileID: -387117975845856546}
-  _surfaceArea: 10
-  _phLean: -0.01
-  _ammoniaLeachPPM: 0.01
---- !u!114 &-387117975845856546
+  _meshHighlighter: {fileID: -4935948185919454723}
+  _surfaceArea: 12
+  _phLean: 0.01
+  _ammoniaLeachPPM: 0
+--- !u!114 &-4935948185919454723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7272751920345273717}
+  m_GameObject: {fileID: 8243823347973119196}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23f8c2e52b7ad3148bb679475e874ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mesh: {fileID: 2166079994483534134}
+  _meshs:
+  - {fileID: 3825913944979346979}
   _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
   _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
-  _placedMaterial: {fileID: 2100000, guid: a1d3ea07a7612164b945e0a8eed613aa, type: 2}
+  _placedMaterials:
+  - {fileID: 2100000, guid: abf979767b20e5c40a1aa5659736dc74, type: 2}

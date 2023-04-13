@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshHighlighter: {fileID: 3280347350568893596}
   _surfaceArea: 18
-  _phLean: -0.005
+  _phLean: 0.005
   _ammoniaLeachPPM: 0
 --- !u!114 &3280347350568893596
 MonoBehaviour:
@@ -62,10 +62,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f8c2e52b7ad3148bb679475e874ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mesh: {fileID: 6719694082764238476}
+  _meshs:
+  - {fileID: 6719694082764238476}
   _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
   _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
-  _placedMaterial: {fileID: 2100000, guid: abf979767b20e5c40a1aa5659736dc74, type: 2}
+  _placedMaterials:
+  - {fileID: 2100000, guid: abf979767b20e5c40a1aa5659736dc74, type: 2}
 --- !u!1 &5062567537378283353
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class Aquarium : MonoBehaviour
     [SerializeField] private float _oxygenExchangePPM;
     [SerializeField] private float _oxygenMaxDiffusePPM;
     [SerializeField] private float _supportedBiomass;
+    [SerializeField] private float _heatDissapation;
+    [SerializeField] private float _roomTemperature = 19f;
 
     private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
     private List<AquariumObject> _aquariumObjects = new List<AquariumObject>();
@@ -35,6 +37,7 @@ public class Aquarium : MonoBehaviour
         _parameters.Add(Parameter.Nitrate, 0f);
         _parameters.Add(Parameter.Ph, 7f);
         _parameters.Add(Parameter.SupportedBiomass, 0f);
+        _parameters.Add(Parameter.Temperature, 18f);
 
         AquariumObject[] aquariumObjects = GetComponentsInChildren<AquariumObject>();
 
@@ -81,13 +84,14 @@ public class Aquarium : MonoBehaviour
     {
         AquariumObject newAquariumObject = AquariumObjectGameObject.GetComponent<AquariumObject>();
         AddAquariumObject(newAquariumObject);
-    }
+    }    
 
     IEnumerator Tick()
     {
         while (_tickTank)
         {
             _parameters[Parameter.Ammonia] += _ammoniaAdditionPPM;
+            _parameters[Parameter.Temperature] = Mathf.Max(_parameters[Parameter.Temperature] - _heatDissapation, _roomTemperature);
             _parameters[Parameter.Oxygen] = Mathf.Min(_parameters[Parameter.Oxygen] + _oxygenExchangePPM, _oxygenMaxDiffusePPM);
 
             foreach (AquariumObject process in _aquariumObjects)

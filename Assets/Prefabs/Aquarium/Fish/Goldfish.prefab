@@ -149,10 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f8c2e52b7ad3148bb679475e874ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mesh: {fileID: 9101225850323144437}
+  _meshs:
+  - {fileID: 9101225850323144437}
   _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
   _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
-  _placedMaterial: {fileID: -1850121052685875404, guid: e6917f5b0b5bcdf41b8c6ba599f871f5, type: 3}
+  _placedMaterials:
+  - {fileID: -1850121052685875404, guid: e6917f5b0b5bcdf41b8c6ba599f871f5, type: 3}
 --- !u!114 &4484090979026714080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,13 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshHighlighter: {fileID: 4484090979026714081}
-  foodConsumeRate: 1
-  oxygenConsumeRate: 1
-  health: 100
-  hungerAmount: 0
-  hungerIncreaseRate: 0
-  requiredPh: 0
-  requiredTemperature: 0
+  _maxHealth: 100
+  _foodConsumption: 1
+  _metabolism: 0
+  _oxygenConsumptionPPM: 1
+  _ammoniaProducedPPM: 0
+  _maxPh: 7.5
+  _minPh: 6.5
+  _maxTemperature: 24
+  _minTemperature: 28
+  phComfortDisplay: 0
 --- !u!114 &4484090979026714083
 MonoBehaviour:
   m_ObjectHideFlags: 0

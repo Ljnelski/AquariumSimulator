@@ -51,13 +51,6 @@ public class NitriteEatingBacteria : AquariumObject
             }
         }
 
-        // Log the effiency
-        if (hasLimitingFactor)
-        {
-            Debug.Log("Missing Inputs can only complete process with  a efficiency of " + processEfficiency);
-        }
-
-
         // Calculate the Growth of the bacteria               
         if (hasLimitingFactor) // if there is a limiting factor then kill the bacteria that is in excess;
         {

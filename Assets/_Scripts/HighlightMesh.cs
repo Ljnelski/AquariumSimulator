@@ -2,24 +2,41 @@ using UnityEngine;
 
 public class HighlightMesh : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer _mesh;
+    [SerializeField] private MeshRenderer[] _meshs;
     [SerializeField] private Material _positiveMaterial;
     [SerializeField] private Material _negativeHightlightMaterial;
-    [SerializeField] private Material _placedMaterial;
+    [SerializeField] private Material[] _placedMaterials;
 
     public void ApplyPositiveHighlight()
     {
-        _mesh.material = _positiveMaterial;
+        for (int i = 0; i < _meshs.Length; i++)
+        {
+            _meshs[i].material = _positiveMaterial;
+        }
     }
 
     public void ApplyNegativeHighlight()
     {
-        _mesh.material = _negativeHightlightMaterial;
+        for (int i = 0; i < _meshs.Length; i++)
+        {
+            _meshs[i].material = _negativeHightlightMaterial;
+        }
     }
 
     public void RemoveHighlight()
     {
-        _mesh.material = _placedMaterial;
+        for (int i = 0; i < _meshs.Length; i++)
+        {
+            _meshs[i].material = _placedMaterials[i];
+        }
+    }
+
+    private void OnValidate()
+    {
+        if(_meshs.Length != _placedMaterials.Length)
+        {
+            Debug.LogError("HighlightMesh ERRROR: The number of meshs and materials for placement do not match");
+        }
     }
 
 }
