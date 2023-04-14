@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2634013423457942632, guid: 5bfc467673fe3784092abd93e83173fe, type: 3}
+  - {fileID: 2100000, guid: af28dbe099460234a80b43b459361692, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 236703749}
   - component: {fileID: 236703745}
   - component: {fileID: -8645851418844462954}
+  - component: {fileID: -8100117638340555567}
   m_Layer: 0
   m_Name: BettaMale
   m_TagString: Untagged
@@ -137,7 +138,7 @@ MonoBehaviour:
   _positiveMaterial: {fileID: 2100000, guid: 3d932967462c7fc4d9f890fde3ad441d, type: 2}
   _negativeHightlightMaterial: {fileID: 2100000, guid: 0cde4fd0a7f7d3548bda03eab6fa1ef6, type: 2}
   _placedMaterials:
-  - {fileID: -2634013423457942632, guid: 5bfc467673fe3784092abd93e83173fe, type: 3}
+  - {fileID: 2100000, guid: af28dbe099460234a80b43b459361692, type: 2}
 --- !u!114 &1344194028442792641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,16 +152,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshHighlighter: {fileID: 919132148263817096}
+  _healthIndicator: {fileID: -8100117638340555567}
   _maxHealth: 100
+  _maxHunger: 100
   _foodConsumption: 1
-  _metabolism: 0
+  _metabolism: 1
+  _starvationRate: 1
   _oxygenConsumptionPPM: 1
-  _ammoniaProducedPPM: 0.1
+  _ammoniaProducedPPM: 0.05
+  _ammoniaPMMTolerance: 4
+  _nitritePPMTolerance: 3
+  _nitratePPMTolerance: 20
   _maxPh: 7.5
   _minPh: 6.5
-  _maxTemperature: 24
-  _minTemperature: 28
+  _temperatureConfortFallOff: 6
+  _maxTemperature: 28
+  _minTemperature: 24
+  _temperatureWeight: 1
+  _hungerWeight: 1
+  _phWeight: 1
+  currentHealthDisplay: 0
+  comfortLevelDisplay: 0
   phComfortDisplay: 0
+  hungerDisplay: 0
+  temperatureDisplay: 0
+  AmmoniaDamage: 0
+  NitriteDamage: 0
+  NitrateDamage: 0
 --- !u!143 &236703749
 CharacterController:
   m_ObjectHideFlags: 0
@@ -210,3 +228,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &-8100117638340555567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272987523647228763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02bc1343dec9de4cbf9127c23321263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _indicator:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 0.2783019, g: 0.58544046, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  _fishMesh: {fileID: 1088013537017311707}
