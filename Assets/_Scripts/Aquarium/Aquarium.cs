@@ -38,6 +38,7 @@ public class Aquarium : MonoBehaviour
         _parameters.Add(Parameter.Ph, 7f);
         _parameters.Add(Parameter.SupportedBiomass, 0f);
         _parameters.Add(Parameter.Temperature, 18f);
+        _parameters.Add(Parameter.FishFood, 2f);
 
         AquariumObject[] aquariumObjects = GetComponentsInChildren<AquariumObject>();
 
