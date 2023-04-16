@@ -19,7 +19,7 @@ public class NitriteEatingBacteria : AquariumObject
     [Header("Output")]
     [SerializeField] private float _nitrateProducedPPM;
 
-    public override void DoProcess(Dictionary<Parameter, float> parameters)
+    public override void DoProcess(AquariumParameterData parameters)
     {
         float requiredNitritePPM = _biomass * _nitriteConsumptionPPM * _processPerBiomassFactor;
         float expectedNitrateProducedPPM = _biomass * _nitrateProducedPPM * _processPerBiomassFactor;
@@ -27,16 +27,11 @@ public class NitriteEatingBacteria : AquariumObject
         float actualNitriteConsumptionPPM;
         float actualNitrateProduced;
 
-        float availableNitritePPM;
-        float availableNitratePPM;
+        float availableNitritePPM = GetParameter(Parameter.Nitrite, parameters);
+        float availableNitratePPM = GetParameter(Parameter.Nitrate, parameters);
 
         bool hasLimitingFactor = false;
         float processEfficiency = 1;
-
-        // Extract the parameter values from the tank
-        if (!TryToGetParameter(parameters, Parameter.Nitrite, out availableNitritePPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Nitrate, out availableNitratePPM)) return;
-
 
         // Determine limiting factor for conversion
 
@@ -74,8 +69,11 @@ public class NitriteEatingBacteria : AquariumObject
         actualNitriteConsumptionPPM = requiredNitritePPM * processEfficiency;
         actualNitrateProduced = expectedNitrateProducedPPM * processEfficiency;
 
-        parameters[Parameter.Nitrite] = availableNitritePPM - actualNitriteConsumptionPPM;
-        parameters[Parameter.Nitrate] = availableNitratePPM + actualNitrateProduced;
+        parameters.DecreaseParameter(Parameter.Nitrite, actualNitriteConsumptionPPM);
+        parameters.IncreaseParameter(Parameter.Nitrate, actualNitrateProduced);
+
+        //parameters[Parameter.Nitrite] = availableNitritePPM - actualNitriteConsumptionPPM;
+        //parameters[Parameter.Nitrate] = availableNitratePPM + actualNitrateProduced;
     }
     public override void HightlightValid()
     {

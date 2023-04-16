@@ -21,7 +21,7 @@ public class AmmoniaEatingBacteria : AquariumObject
     [Header("Output")]
     [SerializeField] private float _nitrateProducedPPM;
 
-    public override void DoProcess(Dictionary<Parameter, float> parameters)
+    public override void DoProcess(AquariumParameterData parameters)
     {
         float requiredAmmoniaPPM = _biomass * _ammoniaConsumptionPPM * _processPerBiomassFactor;
         float requiredOxygenPPM = _biomass * _oxygenConsumptionPPM * _processPerBiomassFactor;
@@ -31,18 +31,12 @@ public class AmmoniaEatingBacteria : AquariumObject
         float actualOxygenConsumptionPPM;
         float actualNitriteProduced;
 
-        float availableAmmoniaPPM;
-        float availableNitritePPM;
-        float availableOxygenPPM;
+        float availableAmmoniaPPM = GetParameter(Parameter.Ammonia, parameters);
+        float availableNitritePPM = GetParameter(Parameter.Nitrate, parameters);
+        float availableOxygenPPM = GetParameter(Parameter.Oxygen, parameters);
 
         bool hasLimitingFactor = false;
         float processEfficiency = 1;
-
-        // Extract the parameter values from the tank
-        if (!TryToGetParameter(parameters, Parameter.Ammonia, out availableAmmoniaPPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Nitrite, out availableNitritePPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Oxygen, out availableOxygenPPM)) return;
-
 
         // Determine limiting factor for conversion
 
@@ -111,10 +105,14 @@ public class AmmoniaEatingBacteria : AquariumObject
         //Debug.Log("---------");
         //Debug.Log("---------");
 
+        parameters.DecreaseParameter(Parameter.Ammonia, -actualAmmoniaConsumptionPPM, 0f);
+        parameters.IncreaseParameter(Parameter.Nitrite, actualNitriteProduced);
+        parameters.DecreaseParameter(Parameter.Oxygen, -actualOxygenConsumptionPPM, 0f);
 
-        parameters[Parameter.Ammonia] = Mathf.Max(availableAmmoniaPPM - actualAmmoniaConsumptionPPM, 0f);
-        parameters[Parameter.Nitrite] = availableNitritePPM + actualNitriteProduced;
-        parameters[Parameter.Oxygen] = Mathf.Max(availableOxygenPPM - actualOxygenConsumptionPPM * _oxygenConsumptionPPM, 0f);
+
+        //parameters[Parameter.Ammonia] = Mathf.Max(availableAmmoniaPPM - actualAmmoniaConsumptionPPM, 0f);
+        //parameters[Parameter.Nitrite] = availableNitritePPM + actualNitriteProduced;
+        //parameters[Parameter.Oxygen] = Mathf.Max(availableOxygenPPM - actualOxygenConsumptionPPM * _oxygenConsumptionPPM, 0f);
     }
 
     public override void HightlightValid()

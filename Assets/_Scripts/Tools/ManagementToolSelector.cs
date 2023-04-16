@@ -11,6 +11,8 @@ public class ManagementToolSelector : MonoBehaviour
     private Camera _raycastSourceCam;
     private ManagementTool targetedManagementTool = null;
 
+    private bool _locked;
+
     void Awake()
     {
         input = new DefaultInputActions();
@@ -43,8 +45,8 @@ public class ManagementToolSelector : MonoBehaviour
             if (newManagementTool == null) { return; }
 
             targetedManagementTool = newManagementTool;
-            targetedManagementTool.SelectTool();
-        }
+            targetedManagementTool.SelectTool();            
+        }        
     }
     private void UseTool(InputAction.CallbackContext context)
     {

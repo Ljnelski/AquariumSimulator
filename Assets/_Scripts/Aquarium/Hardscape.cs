@@ -12,16 +12,9 @@ public class Hardscape : AquariumObject, IBioMedia
 
     public float SupportedBiomass => _surfaceArea;
 
-    public override void DoProcess(Dictionary<Parameter, float> parameters)
+    public override void DoProcess(AquariumParameterData parameters)
     {
-        float ph;
-        float ammoniaPPM;
-
-
-        if(!TryToGetParameter(parameters, Parameter.Ammonia, out ammoniaPPM)) return;
-        if(!TryToGetParameter(parameters, Parameter.Ph, out ph)) return;        
-
-        parameters[Parameter.Ph] = Mathf.Min(14f, Mathf.Max(0f, ph + _phLean));
-        parameters[Parameter.Ammonia] = Mathf.Max(ammoniaPPM + _ammoniaLeachPPM, 0f);
+        parameters.ClampParameter(Parameter.Ph, _phLean, 0f, 14f);
+        parameters.DecreaseParameter(Parameter.Ammonia, _ammoniaLeachPPM, 0f);
     }   
 }

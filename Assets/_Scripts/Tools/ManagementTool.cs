@@ -2,11 +2,16 @@
  * Abstract Class for Tool managment
  * 
  */
+using System;
 using UnityEngine;
 
 public abstract class ManagementTool : MonoBehaviour
 {
     [SerializeField] private HighlightMesh _highlighter;
+
+    protected ActionTimer toolCompletedTimer = new ActionTimer();
+
+    public Action OnToolFinished;
 
     // Logic for what the tool does
     public abstract void UseTool();
@@ -21,6 +26,11 @@ public abstract class ManagementTool : MonoBehaviour
     public virtual void DeselectTool()
     {
         _highlighter.RemoveHighlight();
+    }    
+
+    protected virtual void FinishTool()
+    {
+        OnToolFinished?.Invoke();
     }
 }
 
