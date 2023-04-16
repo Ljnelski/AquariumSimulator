@@ -12,6 +12,7 @@ public enum Parameter
     Oxygen,    
     Ph,
     SupportedBiomass,
-    Temperature
+    Temperature,
+    FishFood,
 }
 
