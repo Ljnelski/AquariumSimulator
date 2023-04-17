@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshHighlighter: {fileID: -4914460000622899960}
   _surfaceArea: 5
-  _phLean: 0.005
+  _phLean: -0.001
   _ammoniaLeachPPM: 0.005
 --- !u!114 &-4914460000622899960
 MonoBehaviour:

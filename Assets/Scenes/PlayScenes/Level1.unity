@@ -165,18 +165,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1888341631}
     m_Modifications:
-    - target: {fileID: 1199501394430832876, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199501394430832876, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199501394430832876, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2027550577588771148, guid: 8f0367021e4863a449c2be04c81576f7, type: 3}
       propertyPath: m_Name
       value: Store
