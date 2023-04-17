@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0704e783565a88e46ad9c4a2cf9d881b, type: 3}
   m_Name: Driftwood Small
   m_EditorClassIdentifier: 
-  Name: Driftwood small
-  Description: 
+  Name: Driftwood Small
+  Description: Small decorative piece of driftwood
   Cost: 27.89
   Icon: {fileID: 0}
   AquariumObjectPrefab: {fileID: 7141680921155570354, guid: ee3efaa8ba0e45e44b17a631eab82fe2, type: 3}
