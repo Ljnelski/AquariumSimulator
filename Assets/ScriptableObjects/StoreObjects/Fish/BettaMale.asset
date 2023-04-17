@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BettaMale
   m_EditorClassIdentifier: 
   Name: Betta Male
-  Description: 
-  Cost: 1
+  Description: Beginner fish, make sure your tank is properly set up to keep your
+    betta Healthy!
+  Cost: 24.49
   Icon: {fileID: 0}
   AquariumObjectPrefab: {fileID: 8272987523647228763, guid: 40209d48945897b4ca599aac420384aa, type: 3}

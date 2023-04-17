@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heater
   m_EditorClassIdentifier: 
   Name: 20 Watt Heater
-  Description: Heats the aquarium to 25 Degrees Celcius
+  Description: Heats the aquarium to 25 degrees celcius
   Cost: 18
   Icon: {fileID: 0}
   AquariumObjectPrefab: {fileID: 5315411437264390653, guid: 3e8e9acfad684294f8c3201c44fcefec, type: 3}

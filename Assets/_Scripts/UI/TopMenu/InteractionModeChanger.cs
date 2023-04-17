@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionModeChanger : MonoBehaviour
 {
-    [SerializeField] private InteractionMode interaction;
-    // Start is called before the first frame update
-
     public void ChangeMode()
     {
-        GameState.Instance.CurrentInteractionMode = interaction;
+        switch (GameState.Instance.CurrentInteractionMode)
+        {
+            case InteractionMode.Manage:
+                GameState.Instance.CurrentInteractionMode = InteractionMode.Edit;
+                break;
+            case InteractionMode.Edit:
+                GameState.Instance.CurrentInteractionMode = InteractionMode.Manage;
+                break;
+            default:
+                break;
+        }
     }
     
 }

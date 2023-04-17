@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rock Tall
   m_EditorClassIdentifier: 
   Name: Rock Tall
-  Description: 
+  Description: Large Decorative rock
   Cost: 18.99
   Icon: {fileID: 0}
   AquariumObjectPrefab: {fileID: 4647389080675919570, guid: 6aff9954aedd65742b6639bfa6acbc0d, type: 3}
