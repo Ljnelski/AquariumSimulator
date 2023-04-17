@@ -6,13 +6,12 @@ using UnityEngine;
 
 public class Fish : AquariumObject
 {
-
     [Header("Fish")]
     [SerializeField] private HealthIndicator _healthIndicator;
 
     [SerializeField] private float _maxHealth = 100f; // Range from 0-100 
     [SerializeField] private float _maxHunger;
-    [SerializeField] private float _foodConsumption = 1f;
+    [SerializeField] private float _foodConsumption = 2f;
     [SerializeField] private float _metabolism; // By what rate the fish gets hungry -- should be fed once or twice a day, with each feeding consisting of 2-3 pellets or flakes
     [SerializeField] private float _starvationRate;
     [SerializeField] private float _oxygenConsumptionPPM = 1f;
@@ -42,6 +41,7 @@ public class Fish : AquariumObject
     private float _currentHealth;
     private float _currentHunger; // Zero is starving
     private float _comfortLevel;
+    private bool _dead = false;
 
     [Header("Debug")]
     public float currentHealthDisplay;
@@ -77,8 +77,6 @@ public class Fish : AquariumObject
         float distanceToLimitOfPh;
 
         float MAX_COMFORT = 100f;
-
-        Debug.Log("PhSatifaction");
 
         if (ph > 14 || ph < 0)
         {
@@ -142,28 +140,22 @@ public class Fish : AquariumObject
         return temperatureComfort;
     }
 
-    public override void DoProcess(Dictionary<Parameter, float> parameters)
+    public override void DoProcess(AquariumParameterData parameters)
     {
-        float avalibleOxygenPPM;
-        float availableAmmoniaPPM;
-        float availableNitritePPM;
-        float availableNitratePPM;
-        float aquariumPh;
-        float aquariumTemperature;
-        float availableFishFood;
+        if(_dead) return;
+
+        float avalibleOxygenPPM = GetParameter(Parameter.Oxygen, parameters);
+        float availableAmmoniaPPM = GetParameter(Parameter.Ammonia, parameters);
+        float availableNitritePPM = GetParameter(Parameter.Nitrite, parameters);
+        float availableNitratePPM = GetParameter(Parameter.Nitrate, parameters);
+        float aquariumPh = GetParameter(Parameter.Ph, parameters);
+        float aquariumTemperature = GetParameter(Parameter.Temperature, parameters);
+        float availableFishFood = GetParameter(Parameter.FishFood, parameters);
 
         float actualOxygenConsumption;
         float actualFoodConsumption = 0f;
 
         float damageTaken = 0f;
-
-        if (!TryToGetParameter(parameters, Parameter.Ammonia, out availableAmmoniaPPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Nitrite, out availableNitritePPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Nitrate, out availableNitratePPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Oxygen, out avalibleOxygenPPM)) return;
-        if (!TryToGetParameter(parameters, Parameter.Ph, out aquariumPh)) return;
-        if (!TryToGetParameter(parameters, Parameter.Temperature, out aquariumTemperature)) return;
-        if (!TryToGetParameter(parameters, Parameter.FishFood, out availableFishFood)) return;
 
         // Check if there is enough oxygen
         if (avalibleOxygenPPM > _oxygenConsumptionPPM)
@@ -179,7 +171,8 @@ public class Fish : AquariumObject
         // Hunger and food
         if (_currentHunger < _maxHunger)
         {
-            actualFoodConsumption = Mathf.Min(_foodConsumption, availableFishFood);
+            float remainingHunger = _maxHunger -_currentHunger;
+            actualFoodConsumption = Mathf.Min(_foodConsumption, availableFishFood, remainingHunger);
             _currentHunger += actualFoodConsumption;
         }
         _currentHunger = Mathf.Max(_currentHunger - _metabolism, 0f);
@@ -224,7 +217,11 @@ public class Fish : AquariumObject
         // calculate the total comfort. Not sure why the math works but is calculating a weight average -> sum / total# of values
         _comfortLevel = (weightedHunger + weightedPH + weightedTemperature) / totalWeight;
 
-        _currentHealth -= damageTaken;
+        _currentHealth = Mathf.Max(_currentHealth - damageTaken, 0f);
+        if(_currentHealth < 0f)
+        {
+            _dead = true;
+        }
 
         _healthIndicator.AdjustGradient(_currentHealth);
 
@@ -235,10 +232,16 @@ public class Fish : AquariumObject
         temperatureDisplay = temperatureComfort;
         phComfortDisplay = phComfort;
 
+        Debug.Log("FishFoood Consumption: " + actualFoodConsumption);
+
         // Change Parameters
-        parameters[Parameter.Ammonia] = availableAmmoniaPPM + _ammoniaProducedPPM;
-        parameters[Parameter.Oxygen] = avalibleOxygenPPM - _oxygenConsumptionPPM;
-        parameters[Parameter.FishFood] = availableFishFood - actualFoodConsumption;
+        parameters.IncreaseParameter(Parameter.Ammonia, _ammoniaProducedPPM);
+        parameters.DecreaseParameter(Parameter.Oxygen, _oxygenConsumptionPPM);
+        parameters.DecreaseParameter(Parameter.FishFood, actualFoodConsumption);
+
+        //parameters[Parameter.Ammonia] = availableAmmoniaPPM + _ammoniaProducedPPM;
+        //parameters[Parameter.Oxygen] = avalibleOxygenPPM - _oxygenConsumptionPPM;
+        //parameters[Parameter.FishFood] = availableFishFood - actualFoodConsumption;
 
 
     }

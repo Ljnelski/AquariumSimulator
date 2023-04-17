@@ -6,7 +6,7 @@ using UnityEngine;
 public class AquariumParameter : MonoBehaviour
 {
     [Header("GameObject References")]
-    [SerializeField] private Aquarium _aquarium;
+    [SerializeField] private AquariumParameterData _aquariumParameterData;
     [SerializeField] private TMP_Text _parameterName;
     [SerializeField] private TMP_Text _value;
 
@@ -21,15 +21,15 @@ public class AquariumParameter : MonoBehaviour
 
     private void OnEnable()
     {
-        _aquarium.OnParameterUpdate += UpdateValue;
+        _aquariumParameterData.OnParameterUpdate += UpdateValue;
     }
     private void UpdateValue()
     {
-        _value.text = _aquarium.AccessParameterValue(parameter).ToString("n2") + suffix;
+        _value.text = _aquariumParameterData.AccessParameterValue(parameter).ToString("n2") + suffix;
     }
     private void OnDisable()
     {
-        _aquarium.OnParameterUpdate -= UpdateValue;
+        _aquariumParameterData.OnParameterUpdate -= UpdateValue;
     }
 
 }

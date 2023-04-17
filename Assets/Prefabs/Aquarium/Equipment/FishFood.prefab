@@ -41,14 +41,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212050154}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1.5
   simulationSpeed: 1
-  stopAction: 3
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -115,9 +115,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
-      minScalar: 5
+      minMaxState: 3
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4895,7 +4895,7 @@ Transform:
   m_GameObject: {fileID: 1291597138583102489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.5857677, y: -4.7088523, z: 52.545628}
-  m_LocalScale: {x: 1.5, y: 2.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1500048934886463450}
@@ -4931,7 +4931,7 @@ Transform:
   m_GameObject: {fileID: 1914293715382531106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 2.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1212050155}
@@ -5047,9 +5047,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d558b9e82525894d9bff25e272bd110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _aquariumParameterData: {fileID: 11400000, guid: 14b0eea2d0bee6f49ae836e823bfcb72, type: 2}
   _highlighter: {fileID: 1145839311785216032}
+  _costPerUse: 0.03
   _activePosition: {fileID: 1500048934886463450}
   _foodPelletEffect: {fileID: 1212050157}
+  _foodPerUse: 5
 --- !u!114 &1145839311785216032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5091,11 +5094,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8465410304532011033}
-  m_LocalRotation: {x: -0.1150751, y: 0.36497167, z: -0.27781588, w: 0.8811196}
-  m_LocalPosition: {x: 3.374, y: 1.88, z: -3.57}
+  m_LocalRotation: {x: -0.3696438, y: 0.09904577, z: -0.89239913, w: 0.23911765}
+  m_LocalPosition: {x: 4.42, y: 4.2, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5343284616684560976}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: -35}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: -150}

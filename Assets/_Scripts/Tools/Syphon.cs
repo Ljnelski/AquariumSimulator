@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishFood : ManagementTool
+public class Syphon : ManagementTool
 {
-    [Header("Fish Food")]
+    [Header("Syphone")]
     [SerializeField] private Transform _activePosition;
-    [SerializeField] private ParticleSystem _foodPelletEffect;
-    [SerializeField] private float _foodPerUse;
+    [SerializeField] private ParticleSystem _bubbleEffect;
+    [SerializeField] private float _waterPh;
+    [SerializeField] private float _waterChangeTime;
 
     public override void Use()
     {
         base.Use();
 
-        toolCompletedTimer.Start(_foodPelletEffect.main.duration, Finish, null);
+        toolCompletedTimer.Start(_waterChangeTime, Finish, null);
 
-        // Add food to fish tank Directly
-        _aquariumParameterData.IncreaseParameter(Parameter.FishFood, _foodPerUse);
+        // remove a percentage the parameters of the water
 
         // Pay the bill for the food
         GameState.Instance.Purchase(_costPerUse);
@@ -26,13 +26,14 @@ public class FishFood : ManagementTool
         transform.rotation = _activePosition.rotation;
 
         // start particles
-        _foodPelletEffect.Play();
+        _bubbleEffect.Play();
     }
 
     protected override void Finish()
     {
         transform.localPosition = Vector3.zero;
-        transform.rotation = Quaternion.Euler(0, -45, 0f);
+        transform.rotation = Quaternion.Euler(0, 0, 13);
+        _bubbleEffect.Stop();
         base.Finish();
     }
 }

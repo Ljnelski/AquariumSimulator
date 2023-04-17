@@ -9,6 +9,8 @@ public class AquariumParameterData : ScriptableObject
 {
     private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
 
+    public Action OnParameterUpdate;
+
     public float AccessParameterValue(Parameter targetParameter)
     {
         float targetValue = 0f;
@@ -40,7 +42,7 @@ public class AquariumParameterData : ScriptableObject
 
     public void DecreaseParameter(Parameter parameter, float value)
     {
-        DecreaseParameter(parameter, -value, 0f);
+        DecreaseParameter(parameter, value, 0f);
     }    
    
     public void DecreaseParameter(Parameter parameter, float value, float min) 

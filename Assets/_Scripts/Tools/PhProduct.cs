@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishFood : ManagementTool
+public class PhProduct : ManagementTool
 {
-    [Header("Fish Food")]
+    [Header("Ph Product")]
     [SerializeField] private Transform _activePosition;
-    [SerializeField] private ParticleSystem _foodPelletEffect;
-    [SerializeField] private float _foodPerUse;
+    [SerializeField] private ParticleSystem _powderEffect;
+    [SerializeField] private float _phChange;
 
     public override void Use()
     {
         base.Use();
 
-        toolCompletedTimer.Start(_foodPelletEffect.main.duration, Finish, null);
+        toolCompletedTimer.Start(_powderEffect.main.duration, Finish, null);
+
+        float currentPh = _aquariumParameterData.AccessParameterValue(Parameter.Ph);
 
         // Add food to fish tank Directly
-        _aquariumParameterData.IncreaseParameter(Parameter.FishFood, _foodPerUse);
+        _aquariumParameterData.ClampParameter(Parameter.Ph, currentPh + _phChange, 0, 14);
 
         // Pay the bill for the food
         GameState.Instance.Purchase(_costPerUse);
@@ -26,7 +28,7 @@ public class FishFood : ManagementTool
         transform.rotation = _activePosition.rotation;
 
         // start particles
-        _foodPelletEffect.Play();
+        _powderEffect.Play();
     }
 
     protected override void Finish()

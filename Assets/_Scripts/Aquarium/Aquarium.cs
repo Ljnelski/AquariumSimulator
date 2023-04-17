@@ -26,14 +26,13 @@ public class Aquarium : MonoBehaviour
     [SerializeField] private float _roomTemperature = 19f;
 
    
-    private List<AquariumObject> _aquariumObjects = new List<AquariumObject>();
-
-    // events
-    public Action OnParameterUpdate;
+    private List<AquariumObject> _aquariumObjects = new List<AquariumObject>();  
 
     private void Awake()
     {
-        // Initalize Parameter
+        // Initalize Parameters that don't start at zero
+        _parameters.IncreaseParameter(Parameter.Ph, 7.0f);
+
         AquariumObject[] aquariumObjects = GetComponentsInChildren<AquariumObject>();
 
         for (int i = 0; i < aquariumObjects.Length; i++)
@@ -80,10 +79,10 @@ public class Aquarium : MonoBehaviour
 
             foreach (AquariumObject process in _aquariumObjects)
             {
-                //process.DoProcess(_parameters);
+                process.DoProcess(_parameters);
             }
 
-            OnParameterUpdate?.Invoke();
+            _parameters.OnParameterUpdate?.Invoke();
             yield return new WaitForSeconds(_tickTime);
         }
     }
