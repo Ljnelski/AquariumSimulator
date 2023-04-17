@@ -105,9 +105,9 @@ public class AmmoniaEatingBacteria : AquariumObject
         //Debug.Log("---------");
         //Debug.Log("---------");
 
-        parameters.DecreaseParameter(Parameter.Oxygen, actualOxygenConsumptionPPM, 0f);
-        parameters.DecreaseParameter(Parameter.Ammonia, actualAmmoniaConsumptionPPM, 0f);
-        parameters.IncreaseParameter(Parameter.Nitrite, actualNitriteProduced);
+        parameters.SubtractFromParameter(Parameter.Oxygen, actualOxygenConsumptionPPM, 0f);
+        parameters.SubtractFromParameter(Parameter.Ammonia, actualAmmoniaConsumptionPPM, 0f);
+        parameters.AddToParameter(Parameter.Nitrite, actualNitriteProduced);
 
 
         //parameters[Parameter.Ammonia] = Mathf.Max(availableAmmoniaPPM - actualAmmoniaConsumptionPPM, 0f);

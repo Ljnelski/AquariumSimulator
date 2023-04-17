@@ -23,7 +23,7 @@ public class AquariumParameterData : ScriptableObject
         return targetValue;
     }
 
-    public void IncreaseParameter(Parameter parameter, float value)
+    public void AddToParameter(Parameter parameter, float value)
     {
         // Make sure the parameter exists/is intalized
         float targetParameter = AccessParameterValue(parameter);
@@ -32,7 +32,7 @@ public class AquariumParameterData : ScriptableObject
         _parameters[parameter] = targetParameter + value;
     }
 
-    public void IncreaseParameter(Parameter parameter, float value, float max)
+    public void AddToParameter(Parameter parameter, float value, float max)
     {
         float targetParameter = AccessParameterValue(parameter);
 
@@ -40,12 +40,20 @@ public class AquariumParameterData : ScriptableObject
         _parameters[parameter] = MathF.Min(targetParameter + value, max);
     }
 
-    public void DecreaseParameter(Parameter parameter, float value)
+    public void AddToParameter(Parameter parameter, float value, float min, float max)
+    {      
+        float targetParameter = AccessParameterValue(parameter);
+
+        // Operation
+        _parameters[parameter] = Mathf.Clamp(targetParameter + value, min, max);
+    }
+
+    public void SubtractFromParameter(Parameter parameter, float value)
     {
-        DecreaseParameter(parameter, value, 0f);
+        SubtractFromParameter(parameter, value, 0f);
     }    
    
-    public void DecreaseParameter(Parameter parameter, float value, float min) 
+    public void SubtractFromParameter(Parameter parameter, float value, float min) 
     {
         float targetParameter = AccessParameterValue(parameter);
 
@@ -53,10 +61,13 @@ public class AquariumParameterData : ScriptableObject
         _parameters[parameter] = MathF.Max(targetParameter - value, min);
     }
 
-    public void ClampParameter(Parameter parameter, float value, float min, float max)
+    public void SubtractFromParameter(Parameter parameter, float value, float min, float max)
     {
         float targetParameter = AccessParameterValue(parameter);
 
-        _parameters[parameter] = Mathf.Clamp(targetParameter + value, min, max);
+        // Operation
+        _parameters[parameter] = Mathf.Clamp(targetParameter - value, min, max);
     }
+
+
 }

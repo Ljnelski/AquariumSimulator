@@ -771,7 +771,7 @@ PrefabInstance:
       objectReference: {fileID: 1286019931}
     - target: {fileID: 2967069761758161881, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: parameter
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2967920724134528397, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
       propertyPath: m_Pivot.x
@@ -1379,6 +1379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 661395643, guid: 915603783ac51e542a3124f245c4c528, type: 3}
+      propertyPath: _phChange
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3947058915317626870, guid: 915603783ac51e542a3124f245c4c528, type: 3}
       propertyPath: m_Name
       value: PhPlus
@@ -1579,14 +1583,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1117528384557825431, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
+    - target: {fileID: 740426893, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
+      propertyPath: _waterRemoved
+      value: 0.33
       objectReference: {fileID: 0}
-    - target: {fileID: 2208722655075108083, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
-      propertyPath: m_Parameters.m_GravityCurve.scalar
-      value: 0.2
+    - target: {fileID: 740426893, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
+      propertyPath: _waterTempurature
+      value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 740426893, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
+      propertyPath: _aquariumParameterData
+      value: 
+      objectReference: {fileID: 11400000, guid: 14b0eea2d0bee6f49ae836e823bfcb72, type: 2}
     - target: {fileID: 3079433698287595090, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1634,14 +1642,6 @@ PrefabInstance:
     - target: {fileID: 8021257455063330836, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
       propertyPath: m_Name
       value: Syphon
-      objectReference: {fileID: 0}
-    - target: {fileID: 9124859604678093334, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 9124859604678093334, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0590b2f3257209648ad610a2d9b88050, type: 3}

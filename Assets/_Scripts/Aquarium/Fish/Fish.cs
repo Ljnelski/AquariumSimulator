@@ -235,9 +235,9 @@ public class Fish : AquariumObject
         Debug.Log("FishFoood Consumption: " + actualFoodConsumption);
 
         // Change Parameters
-        parameters.IncreaseParameter(Parameter.Ammonia, _ammoniaProducedPPM);
-        parameters.DecreaseParameter(Parameter.Oxygen, _oxygenConsumptionPPM);
-        parameters.DecreaseParameter(Parameter.FishFood, actualFoodConsumption);
+        parameters.AddToParameter(Parameter.Ammonia, _ammoniaProducedPPM);
+        parameters.SubtractFromParameter(Parameter.Oxygen, _oxygenConsumptionPPM);
+        parameters.SubtractFromParameter(Parameter.FishFood, actualFoodConsumption);
 
         //parameters[Parameter.Ammonia] = availableAmmoniaPPM + _ammoniaProducedPPM;
         //parameters[Parameter.Oxygen] = avalibleOxygenPPM - _oxygenConsumptionPPM;

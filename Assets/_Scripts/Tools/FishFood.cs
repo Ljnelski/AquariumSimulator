@@ -13,10 +13,11 @@ public class FishFood : ManagementTool
     {
         base.Use();
 
-        toolCompletedTimer.Start(_foodPelletEffect.main.duration, Finish, null);
+        toolCompletedTimer.SetCompleteCallback(Finish);
+        toolCompletedTimer.Start(_foodPelletEffect.main.duration);
 
         // Add food to fish tank Directly
-        _aquariumParameterData.IncreaseParameter(Parameter.FishFood, _foodPerUse);
+        _aquariumParameterData.AddToParameter(Parameter.FishFood, _foodPerUse);
 
         // Pay the bill for the food
         GameState.Instance.Purchase(_costPerUse);

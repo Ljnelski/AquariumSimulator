@@ -13,12 +13,13 @@ public class PhProduct : ManagementTool
     {
         base.Use();
 
-        toolCompletedTimer.Start(_powderEffect.main.duration, Finish, null);
+        toolCompletedTimer.SetCompleteCallback(Finish);
+        toolCompletedTimer.Start(_powderEffect.main.duration);
 
         float currentPh = _aquariumParameterData.AccessParameterValue(Parameter.Ph);
 
         // Add food to fish tank Directly
-        _aquariumParameterData.ClampParameter(Parameter.Ph, currentPh + _phChange, 0, 14);
+        _aquariumParameterData.AddToParameter(Parameter.Ph, _phChange, 0, 14);
 
         // Pay the bill for the food
         GameState.Instance.Purchase(_costPerUse);

@@ -9,7 +9,7 @@ public class ManagementToolSelector : MonoBehaviour
 
     private DefaultInputActions input;
     private Camera _raycastSourceCam;
-    private ManagementTool targetedManagementTool = null;
+    private ManagementTool selectedTool = null;
 
     private bool _locked;
 
@@ -26,7 +26,10 @@ public class ManagementToolSelector : MonoBehaviour
     }
     private void OnClick(InputAction.CallbackContext context)
     {
-        RayCast();
+        if (!_locked)
+        {
+            RayCast();
+        }
     }
     private void RayCast()
     {
@@ -34,34 +37,49 @@ public class ManagementToolSelector : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, _layerMask))
         {
-            ManagementTool newManagementTool = FindManagementTool(hit.transform.gameObject);
+            ManagementTool hitTool = FindManagementTool(hit.transform.gameObject);
 
             // If the cursor moved off the targetedObject, then remove the highlight
-            if (targetedManagementTool != null && targetedManagementTool != newManagementTool)
+            if (selectedTool != null && selectedTool != hitTool)
             {
-                targetedManagementTool.Deselect();
-                targetedManagementTool = null;
+                selectedTool.Deselect();
+                selectedTool = null;
             }
 
             // If there isn't new object then return
-            if (newManagementTool == null) { return; }
-            // If the object is unavalible then don't select it
-            if (!newManagementTool.Availalbe()) { return; }
+            if (hitTool == null) { return; }
 
-            targetedManagementTool = newManagementTool;
-            targetedManagementTool.Select();
+            // If the object is inUse then don't select it
+            if (hitTool.InUse) { return; }
+
+            selectedTool = hitTool;
+            selectedTool.Select();
         }
     }
     private void UseTool(InputAction.CallbackContext context)
     {
-        if (targetedManagementTool == null) { return; }
+        if (selectedTool == null) { return; }
+        if (selectedTool.InUse) { return; }
 
-        targetedManagementTool.Use();
-        
+        selectedTool.Use();
+        selectedTool.Deselect();
+        selectedTool.OnToolFinished += Unlock;
+
+        _locked = true;
+
         // Update what the mouse is pointing at in the case the object moves
         RayCast();
 
     }
+
+    // Locks the selector so another equipment cannot be selected
+    private void Unlock()
+    {       
+        selectedTool.OnToolFinished -= Unlock;
+        selectedTool = null;
+        _locked = false;
+    }
+
     private ManagementTool FindManagementTool(GameObject gameObject)
     {
         ManagementTool managementTool;

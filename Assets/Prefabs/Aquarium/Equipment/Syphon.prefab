@@ -277,13 +277,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521475f34032ae341bf5fb5f54c0cc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aquariumParameterData: {fileID: 0}
+  _aquariumParameterData: {fileID: 11400000, guid: 14b0eea2d0bee6f49ae836e823bfcb72, type: 2}
   _highlighter: {fileID: 740426892}
   _costPerUse: 0
   _activePosition: {fileID: 9124859604678093334}
   _bubbleEffect: {fileID: 6863028696194787768}
+  _waterRemoved: 0.33
   _waterPh: 7
   _waterChangeTime: 10
+  _waterTempurature: 18
 --- !u!114 &740426892
 MonoBehaviour:
   m_ObjectHideFlags: 0

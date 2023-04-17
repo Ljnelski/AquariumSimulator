@@ -14,7 +14,7 @@ public class Hardscape : AquariumObject, IBioMedia
 
     public override void DoProcess(AquariumParameterData parameters)
     {
-        parameters.DecreaseParameter(Parameter.Ammonia, _ammoniaLeachPPM, 0f);
-        parameters.ClampParameter(Parameter.Ph, _phLean, 0f, 14f);
+        parameters.SubtractFromParameter(Parameter.Ammonia, _ammoniaLeachPPM, 0f);
+        parameters.AddToParameter(Parameter.Ph, _phLean, 0f, 14f);
     }   
 }

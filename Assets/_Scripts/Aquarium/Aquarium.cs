@@ -31,7 +31,7 @@ public class Aquarium : MonoBehaviour
     private void Awake()
     {
         // Initalize Parameters that don't start at zero
-        _parameters.IncreaseParameter(Parameter.Ph, 7.0f);
+        _parameters.AddToParameter(Parameter.Ph, 7.0f);
 
         AquariumObject[] aquariumObjects = GetComponentsInChildren<AquariumObject>();
 
@@ -57,7 +57,7 @@ public class Aquarium : MonoBehaviour
         IBioMedia bioMedia;
         if(newAquariumObject.TryGetComponent<IBioMedia>(out bioMedia))
         {            
-            _parameters.IncreaseParameter(Parameter.SupportedBiomass, bioMedia.SupportedBiomass);
+            _parameters.AddToParameter(Parameter.SupportedBiomass, bioMedia.SupportedBiomass);
         }
 
         _aquariumObjects.Add(newAquariumObject);
@@ -73,9 +73,9 @@ public class Aquarium : MonoBehaviour
     {
         while (_tickTank)
         {
-            _parameters.IncreaseParameter(Parameter.Ammonia, _ammoniaAdditionPPM);
-            _parameters.DecreaseParameter(Parameter.Temperature, _heatDissapation, _roomTemperature);
-            _parameters.IncreaseParameter(Parameter.Oxygen, _oxygenMaxDiffusePPM, _oxygenExchangePPM);
+            _parameters.AddToParameter(Parameter.Ammonia, _ammoniaAdditionPPM);
+            _parameters.SubtractFromParameter(Parameter.Temperature, _heatDissapation, _roomTemperature);
+            _parameters.AddToParameter(Parameter.Oxygen, _oxygenMaxDiffusePPM, _oxygenExchangePPM);
 
             foreach (AquariumObject process in _aquariumObjects)
             {

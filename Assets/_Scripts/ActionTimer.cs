@@ -6,9 +6,10 @@
  *                      November 13th (Liam Nelski): Added Option Callback for onTick
  *                      November 21st (Liam Nelski): Added Support for Canceling, Pausing and Updating the Timer
  *                      April 16th (Liam Nelski): Removed 'Timer' from funtion name as it is redunent
+ *                      April 17th (Liam Nelski): Added Set and Add functions to the Complete and TickCallbacks, removed assignment from start function
  *                      
  *                      
- * Version: 1.0.1
+ * Version: 1.0.2
  *                      
  */
 
@@ -45,13 +46,36 @@ public class ActionTimer
         _onAfterCompleteCallback = onAfterComplete;
     }
 
-    public void Start(float timer, Action completeCallback, Action<float> onTickCallback)
+    // sets the complete callback, overwriting all previous callbacks
+    public void SetCompleteCallback(Action completeCallback)
+    {
+        _onCompleteCallback = completeCallback;
+    }
+
+    // adds to the existing complete callbacks
+    public void AddCompleteCallback(Action completeCallback)
+    {
+        _onCompleteCallback += completeCallback;
+    }
+
+    // sets the tick callback, overwriting all previous callbacks 
+    public void SetTickCallback(Action<float> tickCallback)
+    {
+        _onTickCallback = tickCallback;
+    }
+
+    // adds to the existing tick callbacks
+    public void AddTickCallback(Action<float> tickCallback)
+    {
+        _onTickCallback += tickCallback;
+    }
+
+    // starts the timer
+    public void Start(float timerLength)
     {
         _paused = false;
-        _timerTime = timer;
-        _onCompleteCallback += completeCallback;
-        _onTickCallback += onTickCallback;
-    }   
+        SetTime(timerLength);
+    }
 
     public void SetTime(float newTime)
     {
@@ -65,7 +89,7 @@ public class ActionTimer
 
     public void Tick(float deltaTime)
     {
-        if(Unpaused)
+        if (Unpaused)
         {
             if (_timerTime <= 0)
             {
@@ -73,8 +97,8 @@ public class ActionTimer
             }
 
             _timerTime -= deltaTime;
-            _onTickCallback?.Invoke(_timerTime);            
-        }        
+            _onTickCallback?.Invoke(_timerTime);
+        }
     }
 
     public void Complete()
@@ -82,12 +106,10 @@ public class ActionTimer
         _paused = true;
         _onCompleteCallback?.Invoke();
 
-       
-
-        if(_callOnAfterComplete)
+        if (_callOnAfterComplete)
         {
             _onAfterCompleteCallback?.Invoke(this);
-        }       
+        }
     }
 
     // > Clears call backs.

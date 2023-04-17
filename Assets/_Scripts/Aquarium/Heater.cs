@@ -8,6 +8,6 @@ public class Heater : AquariumObject
     [SerializeField] private float _strengthDegrees;
     public override void DoProcess(AquariumParameterData parameters)
     {
-        parameters.IncreaseParameter(Parameter.Temperature, _strengthDegrees, _maxTempurature);
+        parameters.AddToParameter(Parameter.Temperature, _strengthDegrees, _maxTempurature);
     }
 }

@@ -52,7 +52,6 @@ public class NitriteEatingBacteria : AquariumObject
             // Only calculate bacteria die off if the value is over 0.1f
             if (_biomass > _minimumBiomass)
             {
-                Debug.Log("Process Efficiency: " + processEfficiency);
                 // calculate amount of bacteria that don't have enough 'food'
                 float excessBacteria = _biomass * (1 - processEfficiency);
                 
@@ -69,8 +68,8 @@ public class NitriteEatingBacteria : AquariumObject
         actualNitriteConsumptionPPM = requiredNitritePPM * processEfficiency;
         actualNitrateProduced = expectedNitrateProducedPPM * processEfficiency;
 
-        parameters.DecreaseParameter(Parameter.Nitrite, actualNitriteConsumptionPPM);
-        parameters.IncreaseParameter(Parameter.Nitrate, actualNitrateProduced);
+        parameters.SubtractFromParameter(Parameter.Nitrite, actualNitriteConsumptionPPM);
+        parameters.AddToParameter(Parameter.Nitrate, actualNitrateProduced);
 
         //parameters[Parameter.Nitrite] = availableNitritePPM - actualNitriteConsumptionPPM;
         //parameters[Parameter.Nitrate] = availableNitratePPM + actualNitrateProduced;

@@ -19,8 +19,8 @@ public class FishFoodDecay : AquariumObject
         float foodDecayAmount = avalibleFood * _foodDecayFactor + 0.02f;        
         float producedAmmoniaPPM = foodDecayAmount * _ammoniaProductionRate;
 
-        parameters.IncreaseParameter(Parameter.Ammonia, producedAmmoniaPPM);
-        parameters.DecreaseParameter(Parameter.FishFood, foodDecayAmount);
+        parameters.AddToParameter(Parameter.Ammonia, producedAmmoniaPPM);
+        parameters.SubtractFromParameter(Parameter.FishFood, foodDecayAmount);
     }
 }
 

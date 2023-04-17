@@ -13,6 +13,7 @@ public abstract class ManagementTool : MonoBehaviour
     [SerializeField] protected float _costPerUse;
 
     public Action OnToolFinished;
+    public bool InUse => _inUse;
 
     protected ActionTimer toolCompletedTimer = new ActionTimer();
     protected bool _inUse;
@@ -21,14 +22,11 @@ public abstract class ManagementTool : MonoBehaviour
     public virtual void Use()
     {
         _inUse = true;
-        Deselect();
     }
 
     // Logic for when the tool is 'selected' right now that means being pointed by the mouse
     public virtual void Select()
     {
-        if(!Availalbe()) { return; }
-
         _highlighter.ApplyPositiveHighlight();
     }
 
@@ -47,11 +45,6 @@ public abstract class ManagementTool : MonoBehaviour
     {
         _inUse = false;
         OnToolFinished?.Invoke();
-    }
-
-    public virtual bool Availalbe()
-    {
-        return !_inUse;
     }
 }
 
