@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Aquarium : MonoBehaviour
 {
+    [Header("Aquarium Parameter Data")]
+    [SerializeField] private AquariumParameterData _parameters;
+
     [Header("Debug Controls")]
     [SerializeField] private float _nitrateDrainPPM;
     [SerializeField] private float _nitriteDrainPPM;
@@ -22,23 +25,13 @@ public class Aquarium : MonoBehaviour
     [SerializeField] private float _heatDissapation;
     [SerializeField] private float _roomTemperature = 19f;
 
-    private Dictionary<Parameter, float> _parameters = new Dictionary<Parameter, float>();
-    private List<AquariumObject> _aquariumObjects = new List<AquariumObject>();
-
-    // events
-    public Action OnParameterUpdate;
+   
+    private List<AquariumObject> _aquariumObjects = new List<AquariumObject>();  
 
     private void Awake()
     {
-        // Initalize Parameters
-        _parameters.Add(Parameter.Oxygen, 0f);
-        _parameters.Add(Parameter.Ammonia, 0f);
-        _parameters.Add(Parameter.Nitrite, 0f);
-        _parameters.Add(Parameter.Nitrate, 0f);
-        _parameters.Add(Parameter.Ph, 7f);
-        _parameters.Add(Parameter.SupportedBiomass, 0f);
-        _parameters.Add(Parameter.Temperature, 18f);
-        _parameters.Add(Parameter.FishFood, 2f);
+        // Initalize Parameters that don't start at zero
+        _parameters.AddToParameter(Parameter.Ph, 7.0f);
 
         AquariumObject[] aquariumObjects = GetComponentsInChildren<AquariumObject>();
 
@@ -63,22 +56,11 @@ public class Aquarium : MonoBehaviour
         // Update Surface Area
         IBioMedia bioMedia;
         if(newAquariumObject.TryGetComponent<IBioMedia>(out bioMedia))
-        {
-            _parameters[Parameter.SupportedBiomass] += bioMedia.SupportedBiomass;
+        {            
+            _parameters.AddToParameter(Parameter.SupportedBiomass, bioMedia.SupportedBiomass);
         }
 
         _aquariumObjects.Add(newAquariumObject);
-    }
-
-    public float AccessParameterValue(Parameter targetParameter)
-    {
-        float targetValue;
-        if (!_parameters.TryGetValue(targetParameter, out targetValue))
-        {
-            Debug.LogError("Aquarium ERROR: failed to get " + targetParameter + " value from aquarium");
-        }
-
-        return targetValue;
     }
 
     public void AddAquariumObject(GameObject AquariumObjectGameObject)
@@ -91,16 +73,16 @@ public class Aquarium : MonoBehaviour
     {
         while (_tickTank)
         {
-            _parameters[Parameter.Ammonia] += _ammoniaAdditionPPM;
-            _parameters[Parameter.Temperature] = Mathf.Max(_parameters[Parameter.Temperature] - _heatDissapation, _roomTemperature);
-            _parameters[Parameter.Oxygen] = Mathf.Min(_parameters[Parameter.Oxygen] + _oxygenExchangePPM, _oxygenMaxDiffusePPM);
+            _parameters.AddToParameter(Parameter.Ammonia, _ammoniaAdditionPPM);
+            _parameters.SubtractFromParameter(Parameter.Temperature, _heatDissapation, _roomTemperature);
+            _parameters.AddToParameter(Parameter.Oxygen, _oxygenMaxDiffusePPM, _oxygenExchangePPM);
 
             foreach (AquariumObject process in _aquariumObjects)
             {
                 process.DoProcess(_parameters);
             }
 
-            OnParameterUpdate?.Invoke();
+            _parameters.OnParameterUpdate?.Invoke();
             yield return new WaitForSeconds(_tickTime);
         }
     }

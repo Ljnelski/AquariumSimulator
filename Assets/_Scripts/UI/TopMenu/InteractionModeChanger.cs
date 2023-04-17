@@ -9,9 +9,7 @@ public class InteractionModeChanger : MonoBehaviour
 
     public void ChangeMode()
     {
-        Debug.Log("Changing Mode");
         GameState.Instance.CurrentInteractionMode = interaction;
-        Debug.Log(GameState.Instance.CurrentInteractionMode);
     }
     
 }

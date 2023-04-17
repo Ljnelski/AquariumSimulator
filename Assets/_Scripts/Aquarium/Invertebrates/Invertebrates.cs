@@ -25,7 +25,7 @@ public class Invertebrates : AquariumObject
         Comfortable = 2,
         Thriving = 3
     }
-    public override void DoProcess(Dictionary<Parameter, float> parameters)
+    public override void DoProcess(AquariumParameterData parameters)
     {
         // Don't know how this fish affects the water...
     }

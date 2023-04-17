@@ -8,8 +8,9 @@ public class Plant : AquariumObject
     [SerializeField] private float nitriteIntake; // ppm
     [SerializeField] private float nitrateIntake; // ppm
     [SerializeField] private float phRange; // 0-14
-    public override void DoProcess(Dictionary<Parameter, float> parameters)
+    public override void DoProcess(AquariumParameterData parameters)
     {
-        throw new System.NotImplementedException();
+        Debug.LogError("PLANT PROCESS NOT IMPLEMENTED");
+        //throw new System.NotImplementedException();
     }
 }

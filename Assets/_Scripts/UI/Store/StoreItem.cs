@@ -36,7 +36,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         _instantiatedAquariumObject = Instantiate(_aquariumObjectPrefab);
-        if (GameState.Instance.AvalalibleFunds > _cost)
+        if (GameState.Instance.AvalaibleFunds > _cost)
         {
             _instantiatedAquariumObject.GetComponent<HighlightMesh>().ApplyPositiveHighlight();
         } else
@@ -53,7 +53,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerClick(PointerEventData eventData)
     {
         // See if it can be purchased Purchase        
-        if(GameState.Instance.AvalalibleFunds < _cost)
+        if(GameState.Instance.AvalaibleFunds < _cost)
         {
             return;
         }

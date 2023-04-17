@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
-{
+{   
     public static GameState Instance
     {
         get
@@ -26,14 +26,15 @@ public class GameState : MonoBehaviour
         {
             _currentInteractionMode = value;
             OnInteractionModeChange(_currentInteractionMode);
+            ChangeTools();
+
         }
     }
     private InteractionMode _currentInteractionMode;
     public Action<InteractionMode> OnInteractionModeChange;
 
-
     // Avalalible funds (Money)
-    public float AvalalibleFunds
+    public float AvalaibleFunds
     {
         get => _avalalibleFinds;
         set
@@ -52,8 +53,11 @@ public class GameState : MonoBehaviour
     public Action<int, int, int> OnTimeChanged;
 
 
+    [SerializeField] private ManagementToolSelector _managementToolSelector;
+    [SerializeField] private RemoveTool _removalTool;
     [Header("Gameplay Settings")]
-
+    [SerializeField] private InteractionMode _startingMode;
+     
     [Header("Funds")]
     [SerializeField] private float _startingFunds;
     [SerializeField] private float _dailyBudget;
@@ -80,16 +84,33 @@ public class GameState : MonoBehaviour
         Hour = 0;
         Minute = 0;
 
-        AvalalibleFunds = _startingFunds;
+        AvalaibleFunds = _startingFunds;
 
+        CurrentInteractionMode = _startingMode;
         StartCoroutine(Tick());
     }
 
     public void Purchase(float amount)
     {
-        AvalalibleFunds -= amount;
+        AvalaibleFunds -= amount;
     }
 
+    private void ChangeTools()
+    {
+        switch (_currentInteractionMode)
+        {
+            case InteractionMode.Manage:
+                _managementToolSelector.enabled = true;
+                _removalTool.enabled = false;
+                break;
+            case InteractionMode.Edit:
+                _managementToolSelector.enabled = false;
+                _removalTool.enabled = true;
+                break;
+            default:
+                break;
+        }
+    }
 
     private void NormalizeTime()
     {
@@ -114,6 +135,7 @@ public class GameState : MonoBehaviour
         OnTimeChanged?.Invoke(Day, Hour, Minute);
     }
 
+
     IEnumerator Tick()
     {
         while (true)
@@ -125,7 +147,7 @@ public class GameState : MonoBehaviour
             // Check if the day has increased
             if (Day > dayNumber)
             {
-                AvalalibleFunds += _dailyBudget;
+                AvalaibleFunds += _dailyBudget;
             }
         }
     }

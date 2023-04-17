@@ -1653,6 +1653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5dbf6ccb8af6c42ac8ef06702c3318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _parameters: {fileID: 11400000, guid: 14b0eea2d0bee6f49ae836e823bfcb72, type: 2}
   _nitrateDrainPPM: 0
   _nitriteDrainPPM: 0
   _ammoniaAdditionPPM: 0
@@ -1661,6 +1662,8 @@ MonoBehaviour:
   _oxygenExchangePPM: 5
   _oxygenMaxDiffusePPM: 20
   _supportedBiomass: 10
+  _heatDissapation: 0.05
+  _roomTemperature: 19
 --- !u!1 &4931256446114104062
 GameObject:
   m_ObjectHideFlags: 0

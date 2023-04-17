@@ -6,8 +6,7 @@ using UnityEngine;
 public class Store : MonoBehaviour
 {
     [SerializeField] private GameObject _storeUI;
-    // Start is called before the first frame update
-    
+    // Start is called before the first frame update    
 
     private void OnEnable()
     {
@@ -22,7 +21,6 @@ public class Store : MonoBehaviour
 
     private void SetStoreVisable(InteractionMode mode)
     {
-        Debug.Log("Setting Store Visability");
         switch (mode)
         {
             case InteractionMode.Edit:

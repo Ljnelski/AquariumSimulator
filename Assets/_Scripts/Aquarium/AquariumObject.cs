@@ -14,17 +14,12 @@ public abstract class AquariumObject : MonoBehaviour
 
     private StoreItem _storeItem;
 
-    protected bool TryToGetParameter(Dictionary<Parameter, float> parameters, Parameter targetParameter, out float value)
+    protected float GetParameter(Parameter targetParameter, AquariumParameterData parameters)
     {
-        if (!parameters.TryGetValue(targetParameter, out value))
-        {
-            Debug.LogError(GetType().ToString() + " ERROR: Failed to get parameter '" + targetParameter + "' from Aquarium");
-            return false;
-        }
-        return true;
+        return parameters.AccessParameterValue(targetParameter);
     }
 
-    public abstract void DoProcess(Dictionary<Parameter, float> parameters);   
+    public abstract void DoProcess(AquariumParameterData parameters);   
 
     public virtual void HightlightValid()
     {
