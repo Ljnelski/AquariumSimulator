@@ -62,13 +62,6 @@ public class AmmoniaEatingBacteria : AquariumObject
             }
         }
 
-        // Log the effiency
-        //if (hasLimitingFactor)
-        //{
-        //    Debug.Log("Missing Inputs can only complete process with  a efficiency of " + processEfficiency);
-        //}     
-
-
         // Calculate the Growth of the bacteria               
         if (hasLimitingFactor) // if there is a limiting factor then kill the bacteria that is in excess;
         {
@@ -76,12 +69,11 @@ public class AmmoniaEatingBacteria : AquariumObject
             if (_biomass > _minimumBiomass)
             {
                 //          biomass * (excess bacteria) * (the amount of it that dies per tick as a value 0 - 1)
-                Debug.Log("Process Efficiency: " + processEfficiency);
                 // calculate amount of bacteria that don't have enough 'food'
                 float excessBacteria = _biomass * (1 - processEfficiency);
 
                 // kill the excess bacteria
-                _biomass = _biomass - excessBacteria * _starvationFactor;
+                _biomass = Mathf.Max(_biomass - excessBacteria * _starvationFactor, _minimumBiomass);
             }
         }
         else // Grow bacteria

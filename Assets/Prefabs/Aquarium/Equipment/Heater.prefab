@@ -444,8 +444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshHighlighter: {fileID: 2750617337280746184}
-  _maxTempurature: 25
-  _strengthDegrees: 0.1
+  _maxTempurature: 26
+  _strengthDegrees: 0.2
 --- !u!114 &2750617337280746184
 MonoBehaviour:
   m_ObjectHideFlags: 0
