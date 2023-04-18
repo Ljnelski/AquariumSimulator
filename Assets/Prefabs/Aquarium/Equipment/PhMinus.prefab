@@ -51,7 +51,7 @@ MonoBehaviour:
   _costPerUse: 0.1
   _activePosition: {fileID: 1596051566109494884}
   _powderEffect: {fileID: 4139425878144725016}
-  _phChange: -0.05
+  _phChange: -0.1
 --- !u!114 &3170629036034244186
 MonoBehaviour:
   m_ObjectHideFlags: 0
