@@ -92,11 +92,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8756228022820606433}
+  - component: {fileID: -8645851418844462954}
+  - component: {fileID: 236703749}
   - component: {fileID: 919132148263817096}
   - component: {fileID: 1344194028442792641}
-  - component: {fileID: 236703749}
   - component: {fileID: 236703745}
-  - component: {fileID: -8645851418844462954}
   - component: {fileID: -8100117638340555567}
   m_Layer: 0
   m_Name: BettaMale
@@ -121,6 +121,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &-8645851418844462954
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272987523647228763}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!143 &236703749
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272987523647228763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.94
+  m_Radius: 0.92
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0.39}
 --- !u!114 &919132148263817096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,17 +188,20 @@ MonoBehaviour:
   _meshHighlighter: {fileID: 919132148263817096}
   _healthIndicator: {fileID: -8100117638340555567}
   _maxHealth: 100
-  _maxHunger: 100
-  _foodConsumption: 2
-  _metabolism: 0.25
-  _starvationRate: 1
+  _baseHealAmount: 1
   _oxygenConsumptionPPM: 1
+  _maxHunger: 100
+  _foodConsumption: 10
+  _metabolism: 1
+  _starvationDamage: 2
   _ammoniaProducedPPM: 0.05
   _ammoniaPMMTolerance: 4
   _nitritePPMTolerance: 3
   _nitratePPMTolerance: 20
+  _basePhDamage: 0.5
   _maxPh: 7.5
   _minPh: 6.5
+  _baseTemperatureDamage: 0.1
   _temperatureConfortFallOff: 6
   _maxTemperature: 28
   _minTemperature: 24
@@ -179,24 +216,9 @@ MonoBehaviour:
   AmmoniaDamage: 0
   NitriteDamage: 0
   NitrateDamage: 0
---- !u!143 &236703749
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8272987523647228763}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.94
-  m_Radius: 0.92
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0.39}
+  TemperatureDamage: 0
+  PhDamage: 0
+  HungerDamage: 0
 --- !u!114 &236703745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,22 +234,7 @@ MonoBehaviour:
   speed: 0.003
   directionChangeInterval: 0.01
   maxHeadingChange: 1
---- !u!54 &-8645851418844462954
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8272987523647228763}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
+  _fish: {fileID: 1344194028442792641}
 --- !u!114 &-8100117638340555567
 MonoBehaviour:
   m_ObjectHideFlags: 0

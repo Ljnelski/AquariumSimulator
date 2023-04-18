@@ -56,7 +56,7 @@ public class NitriteEatingBacteria : AquariumObject
                 float excessBacteria = _biomass * (1 - processEfficiency);
                 
                 // kill the excess bacteria
-                _biomass = _biomass - excessBacteria * _starvationFactor;
+                _biomass = Mathf.Max(_biomass - excessBacteria * _starvationFactor, _minimumBiomass);
             }
         }
         else // Grow bacteria

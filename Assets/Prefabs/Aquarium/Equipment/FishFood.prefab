@@ -5052,7 +5052,7 @@ MonoBehaviour:
   _costPerUse: 0.03
   _activePosition: {fileID: 1500048934886463450}
   _foodPelletEffect: {fileID: 1212050157}
-  _foodPerUse: 5
+  _foodPerUse: 12
 --- !u!114 &1145839311785216032
 MonoBehaviour:
   m_ObjectHideFlags: 0

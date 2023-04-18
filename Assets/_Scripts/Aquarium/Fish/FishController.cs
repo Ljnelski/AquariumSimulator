@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FishController : MonoBehaviour
@@ -8,36 +7,23 @@ public class FishController : MonoBehaviour
     public float directionChangeInterval = 1;
     public float maxHeadingChange = 30;
 
-    CharacterController controller;
-    float heading;
-    Vector3 targetRotation;
+    [SerializeField] private Fish _fish;
 
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    // If the fish collides with an object, apply a force to move it away from the collision point
-    //    Vector3 normal = collision.contacts[0].normal;
-    //    GetComponent<Rigidbody>().AddForce(normal * 10, ForceMode.Impulse);
-    //    Debug.Log("Entered collision");
-    //}
-
-    //void OnCollisionExit(Collision collision)
-    //{
-    //    // When the fish exits a collision, stop applying the force to move it away
-    //    GetComponent<Rigidbody>().velocity = Vector3.zero;
-    //}
-
-
-
+    private CharacterController _controller;
+    private float _heading;
+    private Vector3 _targetRotation;
+    private bool _alive = true;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
+
+        _fish.OnFishDeath += Die;
 
 
         // Set random initial rotation
-        heading = Random.Range(0, 360);
-        transform.eulerAngles = new Vector3(transform.rotation.x, heading, transform.rotation.z);
+        _heading = Random.Range(0, 360);
+        transform.eulerAngles = new Vector3(transform.rotation.x, _heading, transform.rotation.z);
 
         StartCoroutine(NewHeading());
     }
@@ -48,37 +34,44 @@ public class FishController : MonoBehaviour
         {
             transform.forward = -transform.forward;
         }
-        //else if (hit.transform.CompareTag("Obstacle"))
-        //{
-        //    Debug.Log("HO HO HO");
-        //    controller.enableOverlapRecovery= false;
-        //    //disable colliders for when hitting a rock or sth? 
-        //    //gameObject.GetComponent<Collider>().enabled = false;
-        //}
     }
 
-    void Update()
+    private void Update()
     {
-        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
+        if(!_alive) { return; }
+
+        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, _targetRotation, Time.deltaTime * directionChangeInterval);
         var forward = transform.TransformDirection(Vector3.right);
-        controller.Move(forward * speed);
+        _controller.Move(forward * speed);
     }
 
     IEnumerator NewHeading()
     {
-        while (true)
+        while (_alive)
         {
             NewHeadingRoutine();
             yield return new WaitForSeconds(3);
         }
     }
 
-    void NewHeadingRoutine()
+    private void Die()
     {
-        var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
-        var ceil = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
-        heading = Random.Range(floor, ceil);
-        targetRotation = new Vector3(transform.rotation.x, heading, transform.rotation.z);
+        Debug.Log("DIE");
+        transform.rotation = Quaternion.Euler(new Vector3(180f, 0f, 0f));
+        _alive = false;
+    }
+
+    private void NewHeadingRoutine()
+    {
+        var floor = Mathf.Clamp(_heading - maxHeadingChange, 0, 360);
+        var ceil = Mathf.Clamp(_heading + maxHeadingChange, 0, 360);
+        _heading = Random.Range(floor, ceil);
+        _targetRotation = new Vector3(transform.rotation.x, _heading, transform.rotation.z);
+    }
+
+    private void OnDestroy()
+    {
+        _fish.OnFishDeath -= Die;
     }
 
 

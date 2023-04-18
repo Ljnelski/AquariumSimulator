@@ -1993,6 +1993,7 @@ GameObject:
   - component: {fileID: 4986046565020809593}
   - component: {fileID: 4497591262441338609}
   - component: {fileID: 5529055086930790993}
+  - component: {fileID: 1516349488}
   m_Layer: 2
   m_Name: Bacteria
   m_TagString: Untagged
@@ -2030,8 +2031,8 @@ MonoBehaviour:
   _meshHighlighter: {fileID: 0}
   _biomass: 0.1
   _minimumBiomass: 0.1
-  _growthRate: 1.008
-  _starvationFactor: 0.75
+  _growthRate: 1.015
+  _starvationFactor: 0.05
   _processPerBiomassFactor: 0.1
   _ammoniaConsumptionPPM: 1
   _oxygenConsumptionPPM: 1
@@ -2051,8 +2052,23 @@ MonoBehaviour:
   _meshHighlighter: {fileID: 0}
   _biomass: 0.1
   _minimumBiomass: 0.1
-  _growthRate: 1.005
-  _starvationFactor: 0.75
+  _growthRate: 1.01
+  _starvationFactor: 0.05
   _processPerBiomassFactor: 0.1
   _nitriteConsumptionPPM: 1
   _nitrateProducedPPM: 1
+--- !u!114 &1516349488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415504727717620707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84cd2cf0da819147a9e1f7fdd61ea4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshHighlighter: {fileID: 0}
+  _ammoniaProductionRate: 0.08
+  _foodDecayFactor: 0.05

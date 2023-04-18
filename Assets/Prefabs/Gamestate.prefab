@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2374746420273303135}
   - component: {fileID: 2374746420273303134}
+  - component: {fileID: 45124088}
+  - component: {fileID: 45124089}
   m_Layer: 0
-  m_Name: GameState
+  m_Name: Gamestate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +46,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219558f5479f60b4092cbf928a546c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Funds: 0
-  DayNumber: 0
+  _managementToolSelector: {fileID: 45124089}
+  _removalTool: {fileID: 45124088}
+  _startingMode: 0
+  _startingFunds: 120
+  _dailyBudget: 2
+  _tickRate: 0.5
+  _minutesPerTick: 30
+--- !u!114 &45124088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374746420273303133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cf819edca78d04daa7cc4175a773d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeable:
+    serializedVersion: 2
+    m_Bits: 115
+--- !u!114 &45124089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374746420273303133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f613d2e95c3e02f44a192dfee9d10987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 115

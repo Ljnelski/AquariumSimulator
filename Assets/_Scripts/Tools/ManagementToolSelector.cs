@@ -91,7 +91,7 @@ public class ManagementToolSelector : MonoBehaviour
         }
 
         // Check if the script is contained in the parent of the gameobject
-        if (gameObject.transform.parent.TryGetComponent<ManagementTool>(out managementTool))
+        if (gameObject.transform.parent != null && gameObject.transform.parent.TryGetComponent<ManagementTool>(out managementTool))
         {
             return managementTool;
         }

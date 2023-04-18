@@ -8,15 +8,19 @@ public class Fish : AquariumObject
 {
     [Header("Fish")]
     [SerializeField] private HealthIndicator _healthIndicator;
-
     [SerializeField] private float _maxHealth = 100f; // Range from 0-100 
+    [SerializeField] private float _baseHealAmount;
+
+    [Header("Inputs")]
+    [SerializeField] private float _oxygenConsumptionPPM = 1f;
+
+    [Header("Food")]
     [SerializeField] private float _maxHunger;
     [SerializeField] private float _foodConsumption = 2f;
     [SerializeField] private float _metabolism; // By what rate the fish gets hungry -- should be fed once or twice a day, with each feeding consisting of 2-3 pellets or flakes
-    [SerializeField] private float _starvationRate;
-    [SerializeField] private float _oxygenConsumptionPPM = 1f;
+    [SerializeField] private float _starvationDamage;
 
-    [Header("Output")]
+    [Header("Outputs")]
     [SerializeField] private float _ammoniaProducedPPM;
 
     [Header("Nitrogen Componds Tolerences")]
@@ -25,10 +29,12 @@ public class Fish : AquariumObject
     [SerializeField] private float _nitratePPMTolerance;
 
     [Header("Ph Tolerance")]
+    [Min(0)][SerializeField] private float _basePhDamage = 0.5f;
     [SerializeField] private float _maxPh = 7.5f; // Range from 0-14 -- For Betta fish, the ph should be : 6.5 -> 7.5 
     [SerializeField] private float _minPh = 6.5f; // Range from 0-14 -- For Betta fish, the ph should be : 6.5 -> 7.5 
 
     [Header("Tempurature Tolerance")]
+    [Min(0)][SerializeField] private float _baseTemperatureDamage = 0.5f;
     [SerializeField] private float _temperatureConfortFallOff = 6; // celsius -- Number of degrees outside of the min/max that confort will be 0
     [SerializeField] private float _maxTemperature = 28; // celsius -- For Betta fish, the temp should be 24C-28C
     [SerializeField] private float _minTemperature = 24; // celsius -- For Betta fish, the temp should be 24C-28C
@@ -52,10 +58,20 @@ public class Fish : AquariumObject
     public float hungerDisplay;
     public float temperatureDisplay;
 
-    [Header("Water Quality")]
+    [Header("DamagingFish")]
     public float AmmoniaDamage;
     public float NitriteDamage;
     public float NitrateDamage;
+    public float TemperatureDamage;
+    public float PhDamage;
+    public float HungerDamage;
+
+    public Action OnFishDeath;
+
+    private float _processCycleDamage = 0f;
+    private float _processFoodConsumed = 0f;
+
+    private const float MAX_COMFORT = 100f;
 
     enum comfortLevel
     {
@@ -71,12 +87,10 @@ public class Fish : AquariumObject
         _currentHunger = _maxHunger;
     }
 
-    private float PhComfort(float ph)
+    private float PhReaction(float ph)
     {
         float amountOutsideTolerance;
         float distanceToLimitOfPh;
-
-        float MAX_COMFORT = 100f;
 
         if (ph > 14 || ph < 0)
         {
@@ -100,6 +114,10 @@ public class Fish : AquariumObject
             return MAX_COMFORT; //fully comfortable
         }
 
+        // Calculate damage from ph
+        float damageFromPh = Mathf.Pow(_basePhDamage + 1, amountOutsideTolerance) - 1f;
+        PhDamage = damageFromPh;
+        _processCycleDamage = _processCycleDamage + damageFromPh;
 
         // Calculate the fish comfort. Linear equation y = mx + b
 
@@ -111,11 +129,9 @@ public class Fish : AquariumObject
         return phComfort;
 
     }
-    private float TemperatureComfort(float temperature)
+    private float TemperatureReaction(float temperature)
     {
         float amountOutsideTolerance;
-
-        float MAX_COMFORT = 100f;
 
         // Check if the water ph is outside the tolerance zone of the fish
         if (temperature > _maxTemperature)
@@ -131,6 +147,12 @@ public class Fish : AquariumObject
             return MAX_COMFORT; //fully comfortable
         }
 
+        // Calcualte damage recvied from being outside temperature range
+        float damageFromTemperature = Mathf.Pow(_baseTemperatureDamage + 1, amountOutsideTolerance) - 1f;
+        TemperatureDamage = damageFromTemperature;
+        _processCycleDamage = _processCycleDamage + damageFromTemperature;
+
+
         // Calculate the fish comfort. Linear equation y = mx + b
 
         // the slope, or m
@@ -139,10 +161,45 @@ public class Fish : AquariumObject
         float temperatureComfort = -comfortDecayRate * amountOutsideTolerance + MAX_COMFORT;
         return temperatureComfort;
     }
+    private float HungerReaction(float availableFishFood)
+    {
+        float consumedFood = 0f;
+        // Hunger and food
+        if (_currentHunger < _maxHunger)
+        {
+            float remainingHunger = _maxHunger - _currentHunger;
+            consumedFood = Mathf.Min(_foodConsumption, availableFishFood, remainingHunger);
+            _currentHunger += consumedFood;
+            _processFoodConsumed = consumedFood;
+        }
+        _currentHunger = Mathf.Max(_currentHunger - _metabolism, 0f);
+
+        // Starvation
+        if (_currentHunger <= 0f)
+        {
+            HungerDamage = _starvationDamage;
+            _processCycleDamage = _processCycleDamage + _starvationDamage;
+        }
+
+        float _hungerAsComfort = (_currentHunger / _maxHunger) * MAX_COMFORT;
+
+        return _hungerAsComfort;
+    }
 
     public override void DoProcess(AquariumParameterData parameters)
     {
-        if(_dead) return;
+        if (_dead) return;
+
+        // Exposes Damages to the UI
+        AmmoniaDamage = 0f;
+        NitriteDamage = 0f;
+        NitrateDamage = 0f;
+        TemperatureDamage = 0f;
+        PhDamage = 0f;
+        HungerDamage = 0f;
+
+        _processCycleDamage = 0;
+        _processFoodConsumed = 0;
 
         float avalibleOxygenPPM = GetParameter(Parameter.Oxygen, parameters);
         float availableAmmoniaPPM = GetParameter(Parameter.Ammonia, parameters);
@@ -155,8 +212,6 @@ public class Fish : AquariumObject
         float actualOxygenConsumption;
         float actualFoodConsumption = 0f;
 
-        float damageTaken = 0f;
-
         // Check if there is enough oxygen
         if (avalibleOxygenPPM > _oxygenConsumptionPPM)
         {
@@ -167,44 +222,27 @@ public class Fish : AquariumObject
             actualOxygenConsumption = _oxygenConsumptionPPM - avalibleOxygenPPM;
         }
 
-
-        // Hunger and food
-        if (_currentHunger < _maxHunger)
-        {
-            float remainingHunger = _maxHunger -_currentHunger;
-            actualFoodConsumption = Mathf.Min(_foodConsumption, availableFishFood, remainingHunger);
-            _currentHunger += actualFoodConsumption;
-        }
-        _currentHunger = Mathf.Max(_currentHunger - _metabolism, 0f);
-
-        // Starvation
-        if (_currentHunger <= 0f)
-        {
-            damageTaken = damageTaken + _starvationRate;
-        }
-
         // Water Quality Damage
         if (availableAmmoniaPPM > _ammoniaPMMTolerance)
         {
-            damageTaken = damageTaken + Mathf.Pow(availableAmmoniaPPM - _ammoniaPMMTolerance, 2);
+            _processCycleDamage = _processCycleDamage + Mathf.Pow(availableAmmoniaPPM - _ammoniaPMMTolerance, 2);
             AmmoniaDamage = Mathf.Pow(availableAmmoniaPPM - _ammoniaPMMTolerance, 2);
         }
         if (availableNitritePPM > _nitritePPMTolerance)
         {
-            damageTaken = damageTaken + Mathf.Pow(availableNitritePPM - _nitritePPMTolerance, 2);
+            _processCycleDamage = _processCycleDamage + Mathf.Pow(availableNitritePPM - _nitritePPMTolerance, 2);
             NitriteDamage = Mathf.Pow(availableNitritePPM - _nitritePPMTolerance, 2);
         }
         if (availableNitratePPM > _nitratePPMTolerance)
         {
-            damageTaken = damageTaken + Mathf.Pow(availableNitratePPM - _nitratePPMTolerance, 2);
+            _processCycleDamage = _processCycleDamage + Mathf.Pow(availableNitratePPM - _nitratePPMTolerance, 2);
             NitrateDamage = Mathf.Pow(availableNitritePPM - _nitratePPMTolerance, 2);
         }
 
-
-        // calculate comfort
-        float hungerComfort = _currentHunger;
-        float phComfort = PhComfort(aquariumPh);
-        float temperatureComfort = TemperatureComfort(aquariumTemperature);
+        // Run Fish Reactions and store the comfort value returned
+        float hungerComfort = HungerReaction(availableFishFood);
+        float phComfort = PhReaction(aquariumPh);
+        float temperatureComfort = TemperatureReaction(aquariumTemperature);
 
         // Weigh all the comfort values
         float weightedHunger = hungerComfort * _hungerWeight;
@@ -217,11 +255,26 @@ public class Fish : AquariumObject
         // calculate the total comfort. Not sure why the math works but is calculating a weight average -> sum / total# of values
         _comfortLevel = (weightedHunger + weightedPH + weightedTemperature) / totalWeight;
 
-        _currentHealth = Mathf.Max(_currentHealth - damageTaken, 0f);
-        if(_currentHealth < 0f)
+
+        if (_processCycleDamage > 0)
         {
-            _dead = true;
+            // Do damage
+            _currentHealth = Mathf.Max(_currentHealth - _processCycleDamage, 0f);
+            if (_currentHealth <= 0f)
+            {
+                _dead = true;
+                OnFishDeath?.Invoke();
+                _processCycleDamage = 0;
+            }
         }
+        else if (_currentHealth < _maxHealth)
+        {
+
+            float healFactor = (_comfortLevel / MAX_COMFORT) * _baseHealAmount;
+            _currentHealth = Mathf.Min(_currentHealth + healFactor, _maxHealth);
+        }
+
+
 
         _healthIndicator.AdjustGradient(_currentHealth);
 
@@ -232,17 +285,9 @@ public class Fish : AquariumObject
         temperatureDisplay = temperatureComfort;
         phComfortDisplay = phComfort;
 
-        Debug.Log("FishFoood Consumption: " + actualFoodConsumption);
-
         // Change Parameters
         parameters.AddToParameter(Parameter.Ammonia, _ammoniaProducedPPM);
         parameters.SubtractFromParameter(Parameter.Oxygen, _oxygenConsumptionPPM);
         parameters.SubtractFromParameter(Parameter.FishFood, actualFoodConsumption);
-
-        //parameters[Parameter.Ammonia] = availableAmmoniaPPM + _ammoniaProducedPPM;
-        //parameters[Parameter.Oxygen] = avalibleOxygenPPM - _oxygenConsumptionPPM;
-        //parameters[Parameter.FishFood] = availableFishFood - actualFoodConsumption;
-
-
     }
 }

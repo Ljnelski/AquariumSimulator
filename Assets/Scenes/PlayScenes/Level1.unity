@@ -123,41 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: cf927025c79cee74fa604d93c32eb24c, type: 2}
---- !u!1 &45124085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2374746420273303133, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-  m_PrefabInstance: {fileID: 2374746421443657420}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &45124088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45124085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1cf819edca78d04daa7cc4175a773d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  removeable:
-    serializedVersion: 2
-    m_Bits: 115
---- !u!114 &45124089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45124085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f613d2e95c3e02f44a192dfee9d10987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 115
 --- !u!1001 &360515085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -584,26 +549,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2967920724134528397, guid: 9a0c29fb0686cc54f8b635716ca39bf2, type: 3}
   m_PrefabInstance: {fileID: 1860809898}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1516349484 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8415504727717620707, guid: 88f524ea25178b94aa9e18ff57db6fba, type: 3}
-  m_PrefabInstance: {fileID: 4931256444808305406}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1516349488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516349484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84cd2cf0da819147a9e1f7fdd61ea4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meshHighlighter: {fileID: 0}
-  _ammoniaProductionRate: 0.15
-  _foodDecayFactor: 0.05
 --- !u!1 &1653672454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,45 +1385,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameState
       objectReference: {fileID: 0}
-    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-      propertyPath: _tickRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-      propertyPath: _dailyBudget
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-      propertyPath: _removalTool
-      value: 
-      objectReference: {fileID: 45124088}
-    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-      propertyPath: _startingFunds
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-      propertyPath: _minutesPerTick
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374746420273303134, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
-      propertyPath: _managementToolSelector
-      value: 
-      objectReference: {fileID: 45124089}
     - target: {fileID: 2374746420273303135, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303135, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 389.14993
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303135, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 566.3508
+      value: 5.58
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303135, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.03462401
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2374746420273303135, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_LocalRotation.w
