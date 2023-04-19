@@ -33,6 +33,19 @@ public class GameState : MonoBehaviour
     private InteractionMode _currentInteractionMode;
     public Action<InteractionMode> OnInteractionModeChange;
 
+    // Help
+    public bool HelpOpen
+    {
+        get => _helpOpen;
+        set
+        {
+            _helpOpen = value;
+            OnHelpOpen?.Invoke(value);
+        }
+    }
+    private bool _helpOpen;
+    public Action<bool> OnHelpOpen;
+
     // Avalalible funds (Money)
     public float AvalaibleFunds
     {
@@ -110,7 +123,7 @@ public class GameState : MonoBehaviour
             default:
                 break;
         }
-    }
+    }   
 
     private void NormalizeTime()
     {
