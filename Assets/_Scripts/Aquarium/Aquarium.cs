@@ -67,7 +67,12 @@ public class Aquarium : MonoBehaviour
     {
         AquariumObject newAquariumObject = AquariumObjectGameObject.GetComponent<AquariumObject>();
         AddAquariumObject(newAquariumObject);
-    }    
+    }   
+    
+    public void RemoveAquariumObject(AquariumObject aquariumObject)
+    {
+        _aquariumObjects.Remove(aquariumObject);
+    }
 
     IEnumerator Tick()
     {

@@ -6,11 +6,16 @@ using UnityEngine.InputSystem;
 
 public class RemoveTool : MonoBehaviour
 {
+    // Stopgap to allow the removal of AquariumObjects until the store can be reworked
+    [SerializeField] private Aquarium _aquarium;
+    
     [SerializeField] private LayerMask removeable;
 
     private DefaultInputActions input;
     private Camera cam;
     private AquariumObject targetedAquariumObject = null;
+
+    
 
     void Awake()
     {
@@ -38,10 +43,8 @@ public class RemoveTool : MonoBehaviour
                 targetedAquariumObject = null;
             }
 
-
             // If there isn't new object then return
             if (newAquariumObject == null) { return; }
-
 
             targetedAquariumObject = newAquariumObject;
             targetedAquariumObject.HightLightInvalid();
@@ -52,6 +55,7 @@ public class RemoveTool : MonoBehaviour
         if (targetedAquariumObject == null) { return; }
 
         targetedAquariumObject.Remove();
+        _aquarium.RemoveAquariumObject(targetedAquariumObject);
     }
     private AquariumObject FindAquariumObject(GameObject gameObject)
     {
