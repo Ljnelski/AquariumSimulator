@@ -273,9 +273,7 @@ public class Fish : AquariumObject
             float healFactor = (_comfortLevel / MAX_COMFORT) * _baseHealAmount;
             _currentHealth = Mathf.Min(_currentHealth + healFactor, _maxHealth);
         }
-
-
-
+                
         _healthIndicator.AdjustGradient(_currentHealth);
 
         // Debug print

@@ -1660,6 +1660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 45124088, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
+      propertyPath: _aquarium
+      value: 
+      objectReference: {fileID: 1286019931}
     - target: {fileID: 2374746420273303133, guid: ff5eb32fd37f6ac4e91eaed340eae103, type: 3}
       propertyPath: m_Name
       value: GameState
